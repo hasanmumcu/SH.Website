@@ -1,0 +1,150 @@
+/*******************home parallax-bg----, only need this for home-parallax.html***********************/
+#home-parallax{
+  background: url('../img/showcase-4.jpg') no-repeat;
+  padding: 190px 0;
+  p {
+    color:#fff;
+  }
+}
+
+.typed-cursor{
+  opacity: 1;
+  -webkit-animation: blink 0.7s infinite;
+  -moz-animation: blink 0.7s infinite;
+  animation: blink 0.7s infinite;
+  color:$skincolor;
+}
+@keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+@-moz-keyframes blink{
+  0% { opacity:1; }
+  50% { opacity:0; }
+  100% { opacity:1; }
+}
+
+//only for home-parallax.html
+.parallax-buttons{
+  display: block;
+  text-align: center;
+  margin-top: 20px;
+
+  a{
+    display: inline-block;
+    margin: 5px;
+  }
+}
+
+//only for home-parallax.html
+h1.typed-text{
+  color:#fff;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  font-weight: 700;
+  .element{
+    color:$skincolor;
+  }
+}
+
+
+@media(max-width:568px){
+  h1.typed-text{
+    font-size: 25px;
+  }  
+}
+
+/****services new, which is moved to _home-parallax.scss*****/
+.service-box-4 .service-ico{
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 30px;
+  line-height: 30px;
+  margin-top: 3px;
+  float: left;
+  @include transition (all 0.3s ease-out);
+}
+.service-ico i{
+  color:$skincolor;
+}
+.service-box-4 .service-text{
+  margin-left: 50px;
+}
+.service-text a{
+  color:$skincolor;
+}
+.service-text a i{
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.service-text h4{
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 16px;
+}
+
+/*******************Process inline*****/
+// .process-inline only found in home-parallax.html
+.process-inline{
+  margin-top: 50px;
+  padding-top: 80px;
+  background-color: #eee;
+}
+
+// .Process-col only found at "home-parallax.html"
+.Process-col{
+  padding: 80px 30px;
+  text-align: center;
+}
+.Process-col.one{
+  background-color: rgba(0, 0, 0, .3);
+}
+.Process-col.two{
+  background-color: rgba(0, 0, 0, .5);
+}
+.Process-col.three{
+  background-color: rgba(0, 0, 0, .7);
+}
+.Process-col.four{
+  background-color: rgba(0, 0, 0, 1);
+}
+.Process-col i{
+  font-size: 40px;
+  width:80px;
+  height:80px;
+  line-height: 80px;
+  text-align: center;
+  @include border-radius (50%);
+  border: 1px solid #fff;
+  color:#fff;
+}
+.Process-col h4{
+  font-size: 18px;
+  text-transform: uppercase;
+  color:#fff;
+  margin: 25px 0;
+}
+
+/************no space columns end******/
+.col-one-fourth{
+  width:25%;
+  float: left;
+}
+@media(max-width:767px){
+  .col-one-fourth{
+    width:50%;
+  }
+}
+@media(max-width:568px){
+  .col-one-fourth{
+    width:100%;
+  } 
+}

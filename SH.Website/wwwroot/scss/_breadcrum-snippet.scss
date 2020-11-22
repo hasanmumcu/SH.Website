@@ -1,0 +1,35 @@
+/*************breadcrumb: Looks like one title of this page, can be found at about.html etc****************/
+.breadcrumb-wrap{
+  padding: 30px 0;
+  background-image:url(../img/shadow-bg.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: #f6f6f6;
+  border-top: 1px solid #d2d3d4;
+  border-bottom: 1px solid #d2d3d4;
+  h4{
+    margin: 0px;
+    font-size:16px;
+    color: #333;
+    font-weight: 700;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: $primary-font;
+  }
+}
+ol.breadcrumb{
+  margin: 0;
+  padding: 0;
+  background-color: transparent;
+  color:#333;
+  li{
+    font-weight: 400;
+    font-size: 13px;
+    // text-transform: capitalize;
+    letter-spacing: 1px;
+    a{
+      color:#333;
+    }
+  }
+}

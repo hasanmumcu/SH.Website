@@ -1,0 +1,52 @@
+/****pricing table, found pricing.html, one-page.html, one-page-dark.html****/
+.price-wrap{
+  border: 1px solid #e5e5e5;
+}
+.price-title{
+  padding: 10px 0;
+  text-align: center;
+}
+.price-title h4{
+  margin: 0px;
+}
+.price-price{
+  padding: 15px 0;
+  font-size: 36px;
+  line-height: 40px;
+  background-color: #444;
+  margin: 0 -1px;
+  color: #FFF;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+  text-align: center;
+}
+.price-price span{
+  display: block;
+  font-size: 13px;
+  line-height: 20px;
+  color: #AAA;
+}
+.price-features{
+  padding: 10px 15px;
+  border-bottom: 1px solid #E5E5E5;
+  text-shadow: 1px 1px 1px #FFF;
+  text-align: center;
+}
+.price-features ul li{
+  padding: 5px 0;
+  border-top: 1px solid #e5e5e5;
+}
+.price-features ul li:first-child{
+  border-top: 0;
+}
+.price-action{
+  background-color: #e5e5e5;
+  padding: 15px 0;
+  text-align: center;
+}
+.price-price.popular{
+  background: $skincolor;  
+  color:#fff;
+}
+.price-price.popular span{
+  color:#fff;
+}

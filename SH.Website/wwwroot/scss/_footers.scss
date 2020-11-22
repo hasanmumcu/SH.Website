@@ -1,0 +1,154 @@
+// This is partial scss for footer parts of assan
+/************************************************* css for footers****************************************/
+/* #footer is by default*/
+#footer {
+  p {
+    color:#999;
+  }
+  background: #111;
+  font-size: 0.9em;
+  padding: 80px 0 0;
+  position: relative;
+  clear: both;
+}
+
+.footer-col h3 {
+  color: #fff;
+  margin-bottom: 35px;
+  font-size: 22px;
+  text-transform: capitalize;
+  font-weight: 300;
+  font-style: normal;
+}
+.footer-col h3:first-letter{
+  border-bottom: 1px solid #bbb;
+}
+.contact p{
+  margin-bottom: 10px;
+}
+.contact strong{
+  margin-right: 10px;
+  font-weight: bold;
+}
+.contact strong i{
+  margin-right: 5px;
+}
+.contact a{
+  color:#777;
+}
+.contact a:hover{
+  color:$skincolor;
+}
+.f2-work li{
+  margin: 2px;
+}
+.f2-work li a img{
+  width:70px;
+  height: 50px;
+  border:2px solid transparent;
+  @include transition (0.7s ease-in-out);
+}
+.f2-work li a:hover img{
+  border-color:$skincolor;
+
+}
+.footer-btm{
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #0c0c0c;
+  border-top-left-radius: 6px;
+  border-top-right-radius:6px; 
+}
+.news-form .form-control{
+ @include border-radius (3px);
+ height: 30px;
+}
+@media(max-width:767px){
+  .news-form{
+    text-align: center !important;
+  }
+  .news-form .form-control{
+    margin-bottom: 10px;
+  }
+}
+
+/****************footer 2****************/
+#footer-option {
+  background: #121214;
+  border-top: 4px solid #e1e1e1;
+  font-size: 0.9em;
+  padding: 80px 0 0;
+  position: relative;
+  clear: both;
+}
+#footer-option .footer-col h3{
+  font-size: 25px;
+  font-weight: 300;
+  text-transform: capitalize;
+  color:#fff;
+}
+#footer-option .footer-btm{
+  background-color: #0c0c0c;
+}
+#footer-option .contact a{
+  color:#777;
+}
+#footer-option .contact a:hover{
+  color:$skincolor;
+}
+
+
+/************twitter feed, this part needs php*************
+  .tweet only  found at footer section of pages:
+   both-left-sidebar.html, both-right-sidebar.html, footer-2.html
+****/
+.tweet ul{
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+.tweet ul li{
+  color:#777;
+  font-weight: 500;
+  padding: 8px 0;
+  font-size: 15px;
+
+}
+.tweet ul li:before{
+  content: "\f099";
+  font-family: 'FontAwesome';
+  margin-right: 15px;
+  font-size: 16px;
+  color:$skincolor;
+}
+.tweet ul li .date{
+  padding: 3px 0;
+  font-size: 12px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.tweet ul li img{
+ @include border-radius (50%);
+ margin-right: 10px;
+}
+.tweet li a{
+  color:#fff;
+  font-size: 13px;
+}
+.tweet li a:hover{
+  color:$skincolor;
+}
+.latest-f-news li a{
+  display: block;
+  padding: 4px 0;
+  color:#777;
+}
+.latest-f-news li a i{
+  @include transition (0.4s ease-in-out);
+}
+.latest-f-news li a:hover i{
+  margin-left:5px;
+}
+.latest-f-news li a:hover{
+  color:#fff;
+}

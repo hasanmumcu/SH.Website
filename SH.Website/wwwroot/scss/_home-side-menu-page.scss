@@ -1,0 +1,130 @@
+/***offcanvas css: Bowei: one dropdown button located at left top corner of canvas*****/
+//".logo-side-nav"found in home-side-menu.html only
+.logo-side-nav{
+  text-align: center;
+  padding: 40px 20px;
+}
+
+//".offcanvas-container "found in home-side-menu.html only
+.dark-version.offcanvas-container .offcanvas {
+  background-color: #fff;
+  border-color: #f5f5f5;
+}
+//found in home-side-menu.html only
+.offcanvas-toggle-left {
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  top: 0px;
+  left: 0px;
+  z-index: 1031;
+  text-align: center;
+  background-color: $skincolor;
+  @include border-radius (0px);
+}
+//found in home-side-menu.html only
+.offcanvas-toggle-left:after {
+  font-family: "FontAwesome";
+  content: "\f0c9";
+  font-size: 22px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+}
+#offcanvas.in + .offcanvas-toggle-left:after {
+  content: "\f00d";
+  color: #fff;
+}
+.offcanvas-toggle-right {
+  display: block;
+  padding: 0;
+  margin: 0;
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  top: 0px;
+  right: 0px;
+  z-index: 1031;
+  text-align: center;
+}
+.offcanvas-toggle-right:after {
+  font-family: "FontAwesome";
+  content: "\f0c9";
+  font-size: 22px;
+  line-height: 35px;
+  text-align: center;
+  color: #fff;
+}
+#offcanvas.in + .offcanvas-toggle-right:after {
+  content: "\f00d";
+  color: #999999;
+}
+#offcanvas .navbar-nav > li,
+#offcanvas .navbar-nav {
+  float: none;
+  margin: 0;
+}
+.offcanvas-container .dropdown>a:before {
+  font-family: 'FontAwesome';
+  content: "\f107";
+  position: absolute;
+  left: auto;
+  top: 15px;
+  right: 26px;
+  line-height: 1;
+  color: #d1d1d1;
+}
+#offcanvas .navbar-nav > li > a {
+  color: #333333;
+  border-bottom: 1px solid #f5f5f5;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 13px;
+}
+#offcanvas .navbar-nav > li:last-child > a {
+  border-bottom-color: transparent!important;
+}
+#offcanvas .nav .open > a,
+#offcanvas .nav .open > a:hover,
+#offcanvas .nav .open > a:focus,
+#offcanvas .nav > li > a:hover, 
+#offcanvas .nav > li > a:focus,
+#offcanvas .navbar-nav > li.active > a {
+  color: $skincolor;
+  background-color: #ffffff;
+}
+/*Second level menu items*/
+#offcanvas .dropdown-menu {
+  position: static;
+  width: 100%;
+  float: none;
+  @include box-shadow (none);
+  border: none;
+  background-color: #ffffff;
+  margin: 0;
+}
+#offcanvas.offcanvas-right .dropdown-menu { 
+  overflow: hidden;
+}
+#offcanvas .dropdown-menu > li > a { 
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  border-color: #f7f7f7;
+}
+#offcanvas.offcanvas-right .dropdown-menu > li > a {
+  text-align: right;
+  padding-left: 10px;
+  padding-right: 20px;
+}
+@media(max-width:375px){
+  .navmenu, .navbar-offcanvas{
+    width:250px !important;
+  }
+}

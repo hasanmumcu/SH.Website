@@ -1,0 +1,37 @@
+﻿@model SH.Website.Models.ViewModels.IndexViewModel
+
+
+@{
+
+    ViewData["Title"] = "SH.Website";
+}
+
+
+
+
+@{
+    if (Model != null)
+    {
+        foreach (var item in Model.Partials.OrderBy(s => s.Order))
+        {
+
+            Html.RenderPartial(item.PartialName, item.Model);
+
+
+
+        }
+    }
+
+}
+
+@*@{Html.RenderPartial("_Navigation");}*@
+@*@{Html.RenderPartial("_FullWidthBanner");}*@
+
+
+
+
+
+
+
+
+

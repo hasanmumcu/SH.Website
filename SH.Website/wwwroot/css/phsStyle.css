@@ -1,0 +1,18 @@
+﻿.panel-backing {
+
+    border-radius : 150px;
+    background : #2f2f2f;
+    opacity : .6;
+    border: none;
+    padding : 150px; 
+}
+
+.panel-backingText 
+{
+    color: white;
+    opacity : 1;
+    background: transparent;
+    font-size: 150px;
+    background-position:center;
+    
+}

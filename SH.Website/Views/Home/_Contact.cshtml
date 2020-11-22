@@ -1,0 +1,395 @@
+﻿@model SH.Website.Models.ViewModels.ContactViewModel
+
+
+<section id="contact" class="padded-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-heading">
+                    <h2>keep in touch</h2>
+                    <span class="center-line"></span>
+                </div>
+            </div>
+        </div><!--center heading row-->
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+
+                <div class="form-contact">
+                    @*<form name="sentMessage" id="contactForm" method="post" novalidate="">*@
+                    <form asp-controller="Contacts" asp-action="Create" method="post">
+                        <div class="form-horizontal">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Name<span>*</span></label>
+                                            <input asp-for="Name" class="form-control" placeholder="Name" id="name" />
+                                            @*<input type="text" class="form-control" placeholder="Name"  required="" data-validation-required-message="Please enter your name.">*@
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="row control-group">
+                                        <div class="form-group col-xs-12 controls">
+                                            <label>Email Address<span>*</span></label>
+                                            <input asp-for="Email" class="form-control" placeholder="Email Address" id="email" />
+                                            @*<input type="email" class="form-control" placeholder="Email Address"  required="" data-validation-required-message="Please enter your email address.">*@
+                                            <p class="help-block"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12  controls">
+                                    <label>Phone Number<span>*</span></label>
+                                    <input asp-for="Subject" class="form-control" placeholder="Phone Number" id="phone" />
+                                    @*<input type="tel" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number.">*@
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 controls">
+                                    <label>Message<span>*</span></label>
+                                    <input asp-for="Message" class="form-control" id="message" placeholder="Message" />
+                                    @*<textarea rows="5" class="form-control" placeholder="Message"  required="" data-validation-required-message="Please enter a message."></textarea>*@
+                                    <p class="help-block"></p>
+                                </div>
+                            </div>
+
+                            <div id="success"></div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <button type="submit" class="btn btn-theme-bg btn-lg">Send Message</button>
+                                </div>
+                            </div>
+                            @*</form>*@
+                        </div>
+                    </form>
+
+                </div><!--contact form-->
+            </div>
+
+        </div>
+    </div>
+</section><!--contact-->
+<!--<div class="container">
+    <div class="row">
+        <div class="col-md-8 margin30 sky-form-columns">
+            <h3 class="heading">Contact info</h3>
+            <p>
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+            </p>
+            <form asp-controller="Contacts" asp-action="Create" method="post">
+                <div class="form-horizontal">
+
+
+                    <fieldset>
+                        <div class="row">
+                            <section class="col col-6">
+                                <label class="label">Name</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-user"></i>
+                                    <input asp-for="Name" class="form-control" placeholder="Name" id="name">
+                                </label>
+                            </section>
+                            <section class="col col-6">
+                                <label class="label">E-mail</label>
+                                <label class="input">
+                                    <i class="icon-append fa fa-envelope-o"></i>
+                                    <input asp-for="Email" class="form-control" placeholder="Email Address" id="email">
+                                </label>
+                            </section>
+                        </div>
+
+                        <section>
+                            <label class="label">Subject</label>
+                            <label class="input">
+                                <i class="icon-append fa fa-tag"></i>
+                                <input asp-for="Subject" class="form-control" placeholder="Phone Number" id="phone" >
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Message</label>
+                            <label class="textarea">
+                                <i class="icon-append fa fa-comment"></i>
+                                <input asp-for="Message" class="form-control" id="message" placeholder="Message" >
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="label">Enter characters below:</label>
+                            <label class="input input-captcha">
+                                <img src="~/sky-form/captcha/image.php?<?php echo time(); ?>" width="100" height="35" alt="Captcha image" />
+                                <input type="text" maxlength="6" name="captcha" id="captcha">
+                            </label>
+                        </section>
+
+                        <section>
+                            <label class="checkbox"><input type="checkbox" name="copy"><i></i>Send a copy to my e-mail address</label>
+                        </section>
+                    </fieldset>
+
+                    <footer>
+                        <button type="submit" class="btn border-black btn-lg">Send message</button>
+                    </footer>
+
+                    <div class="message">
+                        <i class="fa fa-check"></i>
+                        <p>Your message was successfully sent!</p>
+                    </div>
+                </div>
+            </form>
+
+        </div>
+        <div class="col-md-4">
+            <h3 class="heading">Contact info</h3>
+            <ul class="list-unstyled contact contact-info">
+                <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li>
+                <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
+                <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
+                <li> <p><strong><i class="fa fa-print"></i> Fax:</strong> +91 2345 2132</p></li>
+            </ul>
+            <div class="divide40"></div>
+            <h4>Get social</h4>
+            <ul class="list-inline social-1">
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+            </ul>
+        </div>
+    </div>
+</div>-->
+<!--contact advanced container end-->
+<!--<div class="divide60"></div>
+<div id="map-canvas"></div>
+<footer id="footer">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-3 col-sm-6 margin30">
+                <div class="footer-col">
+                    <h3>About assan</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam, adipiscing condimentum tristique vel, eleifend sed turpis. Pellentesque cursus arcu id magna euismod in elementum purus molestie.
+                    </p>
+                    <ul class="list-inline social-1">
+                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+                        <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                    </ul>
+                </div>
+            </div>-->
+<!--footer col-->
+<!--<div class="col-md-3 col-sm-6 margin30">
+    <div class="footer-col">
+        <h3>Contact</h3>
+
+        <ul class="list-unstyled contact">
+            <li><p><strong><i class="fa fa-map-marker"></i> Address:</strong> vaisahali, jaipur, 302012</p></li>
+            <li><p><strong><i class="fa fa-envelope"></i> Mail Us:</strong> <a href="#">Support@designmylife.com</a></p></li>
+            <li> <p><strong><i class="fa fa-phone"></i> Phone:</strong> +91 1800 2345 2132</p></li>
+            <li> <p><strong><i class="fa fa-print"></i> Fax</strong> 1800 2345 2132</p></li>
+            <li> <p><strong><i class="fa fa-skype"></i> Skype</strong> assan.856</p></li>
+
+        </ul>
+    </div>
+</div>-->
+<!--footer col-->
+<!--<div class="col-md-3 col-sm-6 margin30">
+    <div class="footer-col">
+        <h3>Featured Work</h3>
+        <ul class="list-inline f2-work">
+            <li><a href="portfolio-single.html"><img src="~/img/img-1.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-2.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-3.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-4.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-5.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-6.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-7.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-8.jpg" class="img-responsive" alt=""></a></li>
+            <li><a href="portfolio-single.html"><img src="~/img/img-9.jpg" class="img-responsive" alt=""></a></li>
+        </ul>
+    </div>
+</div>-->
+<!--footer col-->
+<!--<div class="col-md-3 col-sm-6 margin30">
+    <div class="footer-col">
+        <h3>Newsletter</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer lorem quam,
+        </p>
+        <form role="form" class="subscribe-form">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Enter email to subscribe">
+                <span class="input-group-btn">
+                    <button class="btn  btn-theme-dark btn-lg" type="submit">Ok</button>
+                </span>
+            </div>
+        </form>
+    </div>
+</div>-->
+<!--footer col-->
+<!--</div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <div class="footer-btm">
+                    <span>&copy;2014. Theme by Design_mylife</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>-->
+<!--default footer end here-->
+<!--scripts and plugins -->
+<!--must need plugin jquery-->
+<!--<script src="~/js/jquery.min.js"></script>-->
+<!--bootstrap js plugin-->
+<!--<script src="~/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>-->
+<!--easing plugin for smooth scroll-->
+<!--<script src="~/js/jquery.easing.1.3.min.js" type="text/javascript"></script>-->
+<!--sticky header-->
+<!--<script type="text/javascript" src="~/js/jquery.sticky.js"></script>-->
+<!--flex slider plugin-->
+<!--<script src="~/js/jquery.flexslider-min.js" type="text/javascript"></script>-->
+<!--parallax background plugin-->
+<!--<script src="~/js/jquery.stellar.min.js" type="text/javascript"></script>-->
+<!--digit countdown plugin-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.3/waypoints.min.js"></script>-->
+<!--digit countdown plugin-->
+<!--<script src="~/js/jquery.counterup.min.js" type="text/javascript"></script>-->
+<!--on scroll animation-->
+<!--<script src="~/js/wow.min.js" type="text/javascript"></script>-->
+<!--owl carousel slider-->
+<!--<script src="~/js/owl.carousel.min.js" type="text/javascript"></script>-->
+<!--popup js-->
+<!--<script src="~/js/jquery.magnific-popup.min.js" type="text/javascript"></script>-->
+<!--you tube player-->
+<!--<script src="~/js/jquery.mb.YTPlayer.min.js" type="text/javascript"></script>-->
+<!--customizable plugin edit according to your needs-->
+<!--<script src="~/js/custom.js" type="text/javascript"></script>-->
+<!--sky form plugin js-->
+<!--<script src="~/sky-form/js/jquery.form.min.js" type="text/javascript"></script>
+<script src="~/sky-form/js/jquery.validate.min.js" type="text/javascript"></script>
+<script src="~/js/sky-forms-custom.js" type="text/javascript"></script>-->
+<!--gmap js-->
+<!--<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+<script type="text/javascript">
+    var myLatlng;
+    var map;
+    var marker;
+
+    function initialize() {
+        myLatlng = new google.maps.LatLng(37.397802, -121.890288);
+
+        var mapOptions = {
+            zoom: 13,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            scrollwheel: false,
+            draggable: false
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+        var contentString = '<p style="line-height: 20px;"><strong>assan Template</strong></p><p>Vailshali, assan City, 302012</p>';
+
+        var infowindow = new google.maps.InfoWindow({
+            content: contentString
+        });
+
+        marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title: 'Marker'
+        });
+
+        google.maps.event.addListener(marker, 'click', function () {
+            infowindow.open(map, marker);
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>-->
+<!--<section id="contact" class="padded-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="center-heading">
+                    <h2>keep in touch</h2>
+                    <span class="center-line"></span>
+                </div>
+            </div>
+        </div><!--center heading row-->
+<!--<div class="row">
+    <div class="col-sm-6 col-sm-offset-3">
+
+        <div class="form-contact">-->
+@*<form name="sentMessage" id="contactForm" method="post" novalidate="">*@
+<!--<form asp-controller="Contacts" asp-action="Create" method="post">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="row control-group">
+                    <div class="form-group col-xs-12 controls">
+                        <label>Name<span>*</span></label>
+                        <input asp-for="Name" class="form-control" placeholder="Name" id="name" />-->
+@*<input type="text" class="form-control" placeholder="Name"  required="" data-validation-required-message="Please enter your name.">*@
+<!--<p class="help-block"></p>
+        </div>
+    </div>
+
+</div>
+
+<div class="col-md-6">
+    <div class="row control-group">
+        <div class="form-group col-xs-12 controls">
+            <label>Email Address<span>*</span></label>
+            <input asp-for="Email" class="form-control" placeholder="Email Address" id="email" />-->
+@*<input type="email" class="form-control" placeholder="Email Address"  required="" data-validation-required-message="Please enter your email address.">*@
+<!--<p class="help-block"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row control-group">
+    <div class="form-group col-xs-12  controls">
+        <label>Phone Number<span>*</span></label>
+        <input asp-for="Subject" class="form-control" placeholder="Phone Number" id="phone" />-->
+@*<input type="tel" class="form-control" placeholder="Phone Number" id="phone" required="" data-validation-required-message="Please enter your phone number.">*@
+<!--<p class="help-block"></p>
+    </div>
+</div>
+<div class="row control-group">
+    <div class="form-group col-xs-12 controls">
+        <label>Message<span>*</span></label>
+        <input asp-for="Message" class="form-control" id="message" placeholder="Message" />-->
+@*<textarea rows="5" class="form-control" placeholder="Message"  required="" data-validation-required-message="Please enter a message."></textarea>*@
+<!--<p class="help-block"></p>
+    </div>
+</div>
+
+<div id="success"></div>
+<div class="row">
+    <div class="form-group col-xs-12">
+        <button type="submit" class="btn btn-theme-bg btn-lg">Send Message</button>
+    </div>
+</div>-->
+@*</form>*@
+<!--</div>
+    </form>
+
+</div>-->
+--><!--contact form-->
+<!--</div>
+
+        </div>
+    </div>
+</section>-->
+<!--contact-->

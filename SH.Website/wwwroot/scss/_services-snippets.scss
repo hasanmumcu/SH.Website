@@ -1,0 +1,196 @@
+/*  services */
+.services-wrap{
+  padding-top:60px;
+  padding-bottom: 40px;
+  background-color: #fff;
+}
+.services-box{
+  clear: both;
+}
+// Bowei: I think normally, .services-box-icon is under services-box
+.services-box-icon{
+  background: transparent;
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  float: left;
+  height: 35px;
+  line-height: 35px;
+  margin-right: 10px;
+  position: relative;
+  text-align: center;
+  top: 5px;
+  i {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: $skincolor;
+    color: #fff;
+    font-size: 17px;
+    @include border-radius (50%);
+  }
+}
+// Bowei: I think normally, .services-box-info is under services-box
+.services-box-info{
+  padding-left: 65px;
+  h4 {
+    font-weight: 700;
+    font-size: 15px;
+    color: #000;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+}
+
+/*services 2, ".service-box" is only used in home-2.html*/
+
+.service-box{
+  i{
+    width: 85px;
+    height: 85px;
+    line-height:85px;
+    text-align: center;
+    color:$skincolor;
+    font-size: 30px;
+    background-color: #f7f9fa;
+    @include border-radius (50%);
+    margin-bottom: 25px;
+    @include transition (0.7s ease-in-out);
+  }
+  h3{
+    font-size: 20px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    font-weight: 500;
+  }
+  &:hover i {
+    @include transform (rotateY(360deg));
+    color: #fff;
+    background-color: $skincolor;
+  }
+}
+
+
+/***services3,  ***/
+#services-bg-wrap{
+  padding: 90px 0;
+  background-color: #f7f9fa;
+}
+.service-3-meta h1{
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 25px;
+}
+.white-bg{
+  background-color: #fff !important;
+  padding-top: 90px !important;
+  padding-bottom: 50px !important;
+}
+.service-4-meta h3{
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+.blue-bg{
+  background-color:$skincolor;
+  padding-top: 70px;
+  padding-bottom: 40px;
+}
+.blue-bg .services-box i{
+  @include box-shadow (none);
+  font-size: 50px;
+  margin-right: 25px;
+}
+.blue-bg .services-box .services-box-info{
+  margin-left: 30px;
+}
+.blue-bg .services-box .services-box-info h4{
+  color:#fff;
+  font-size: 25px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+.blue-bg .services-box .services-box-info p{
+  color:#eee;
+}
+
+/***special features, I can found this in services.html***/
+.special-feature {
+  .section-title hr{
+    border-color:#151515;
+  }
+  .s-feature-box{
+    &:hover .mask-top{
+      top:-200px;
+      @include transition (all 0.3s ease-out 0s);
+    }
+    overflow:hidden;
+    position:relative;
+    height:280px;
+    border:1px solid #f2f2f2;
+    margin-bottom:20px;
+    cursor:pointer;
+
+    &:hover .mask-bottom{
+      bottom:0;
+      @include transition (all 0.3s ease-out 0s);
+    }
+  }
+
+  i {
+    font-size: 65px;
+    line-height: 75px;
+    color: $skincolor;
+  }
+  h4 {
+    font-size: 16px;
+    margin-top: 25px;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #777;
+  }
+
+  .mask-top{
+    width:100%;
+    background-color:#ffffff;
+    padding:55px 0;
+    position:absolute;
+    top:0px;
+    @include transition (all 0.3s ease-out 0s);
+
+    h4:before{
+      top: -18px;
+      content: "";
+      display: block;
+      height: 2px;
+      left: 0;
+      right:0;
+      margin:-2px auto;
+      position: absolute;
+      width: 40px; 
+    }
+  }
+
+  .mask-bottom{
+    color:#333333;
+    padding:20px 15px 20px 15px;
+    width:100%;
+    position:absolute;
+    bottom:-300px;
+    height:100%;
+    @include transition (all 0.3s ease-out 0s);
+    p{
+      padding:0px 5px;
+      font-size: 13px;
+    }
+    h4{
+      margin:15px 0px 17px;
+    }
+    i{
+      font-size: 38px;
+      line-height: 50px;
+    }
+  }
+} 
+// END .special-feature 

@@ -1,0 +1,54 @@
+/**********************invoice page************************/
+body.invoice{
+  background-color: #ECEEF4;
+  @include border-radius (5px);
+}
+@media(min-width:992px){
+  .container.invoice-outer{
+    width:970px;
+    @include border-radius (5px);
+  }
+
+}
+.invoice-outer{
+  background-color: #fff;
+  min-height: 400px;
+  padding: 15px;
+  line-height: 22px;
+  border:1px solid #ddd;
+}
+.invoice-header h2{
+  margin-bottom: 10px;
+  font-weight: 700;
+  font-size: 26px;
+
+}
+@media(min-width:768px){
+  .invoice-header-right{
+    text-align: right;
+  }   
+  .invoice-header-right h5{
+    margin-bottom: 0px;
+  }
+  .navbar-right .dropdown-menu {
+    right: 0;
+    left: auto;
+    top: 60px;
+  }
+}
+.invoice-header-right h5{
+  font-size: 17px;
+}
+.about-client ul strong{
+  font-weight: 700;
+  margin-right: 5px;
+}
+.invoice .panel-default>.panel-heading{
+  border-color: #ddd !important;
+}
+.copyright-info{
+  text-align: center;
+  display: block;
+  color:#999;
+  font-size: 12px;
+}

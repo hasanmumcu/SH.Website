@@ -1,0 +1,247 @@
+/*********************
+
+TOP BARS
+
+****************************/
+#header-top{
+    background-color: #f8f8f8;
+    border-bottom: 1px solid #eee;
+}
+
+.top-bar{
+    min-height: 45px;
+    line-height: 45px;
+}
+.top-bar a{
+    margin-right: 10px;
+    font-size: 13px;
+    color:#888;
+}
+.top-bar a i{
+    margin-right: 5px;
+}
+.top-bar .sample-1right a i{
+
+    margin-right: 5px;
+    color: #999;
+    width: 20px;
+    height: 25px;
+    display: inline-block;
+    background-color: transparent;
+    text-align: center;
+    line-height: 25px;
+     @include border-radius (3px);
+
+}
+.top-social{
+    margin: 0;
+    padding:0;
+}
+.top-social li{
+    padding: 0px;
+}
+.top-social li a{
+    font-size: 14px;
+    color:#888;
+    margin: 0px;
+    display: block;
+}
+.top-social li a i{
+    width:28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    margin: 0px;
+    background-color: transparent;
+    color:#777;
+    border: 1px solid #999;
+     @include border-radius (2px);
+    @include transition (all 0.3s);
+}
+
+.top-social li a i:hover{
+    color:#fff;
+    background-color: #252525;
+    border-color: #252525;
+}
+.colored-top-social li{
+    padding: 0px;
+    margin: 0px;
+}
+.colored-top-social li a{
+    margin: 0px;
+    padding: 0px;
+}
+.colored-top-social li i{
+    margin: 0px;
+    padding: 0px;
+}
+
+.top-bar-dark{
+    background-color: #333;
+}
+.socials-simple {
+    padding: 0;
+    margin: 0;
+}
+.socials-simple li{
+    line-height: 35px;
+}
+.socials-simple li a{
+    color:#bbb;
+    font-size: 15px;
+}
+.socials-simple li a:hover{
+    color:#fff;
+}
+.top-dark-right{
+    margin: 0px;
+    padding: 0px;
+}
+.top-dark-right li{
+    line-height: 35px;
+    border-left: 1px solid #444;
+    padding:0px 10px;
+}
+.top-dark-right li, .top-dark-right li a{
+    color:#bbb;
+    font-size: 12px;
+}
+.top-dark-right li i{
+    margin-right: 5px;
+}
+.top-dark-right li a:hover{
+    color:#fff;
+}
+
+/***search top bar**/
+.topbar-icons {
+  display: block;
+ 
+}
+.topbar-icons i {
+  margin: 0px !important;
+  display: block;
+}
+
+.search {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 15px;
+  top: 0;
+  height: 100%;
+  z-index: 99999;
+}
+.search .form-control {
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 99%;
+  right: 0;
+  border: 0px;
+  background-color: #fff;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -ms-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  -ms-border-radius: 0px;
+  border-radius: 0px;
+}
+
+.search-close {
+  position: absolute;
+  right: 9px;
+  top: 5px;
+  cursor: pointer;
+}
+/* Mega MENU */
+
+.yamm-content{
+    padding: 25px;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+.dropdown-menu .divider{
+    background-color:#222; 
+}
+.yamm-content h3.heading{
+    border-bottom: none;
+    margin: 0 0 5px;
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.yamm-content h3:before{
+    content: "";
+    display:none;
+}
+
+.yamm-content .mega-vertical-nav{
+    margin-bottom: 30px;
+}
+.yamm-content .mega-vertical-nav li a{
+    padding: 8px 6px;
+    @include transition (all 0.3s ease-in);
+    color: #666;
+    border-bottom: 1px solid #fbfbfb;
+    font-size: 12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    /*    border-bottom: 0px;*/
+}
+.nav.mega-vertical-nav li a:hover{
+    background-color:transparent;
+    color:$skincolor;
+}
+
+.mega-contact p{
+    margin: 0;
+}
+.mega-contact i{
+    color:$skincolor;
+    margin-right: 10px;
+}
+/*navbar search form***/
+.dropdown-form{
+    padding: 10px 15px;
+    min-width: 213px;
+}
+.dropdown-form .form-control{
+    height: 31px;
+}
+
+/***header top bar with search***/
+.top-bar form{
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+}
+.top-bar button{
+    border: 0px;
+    background-color: transparent;
+    position: absolute;
+    top: 9px;
+    right: 13px;
+    margin:0px;
+    padding: 0px;
+    width: auto;
+    height: auto;
+    line-height: 15px;
+}
+.top-bar form .form-control{
+    @include border-radius (20px);
+    margin-top: 6px;
+    width:150px;
+    @include transition (all 0.3s ease-in-out);
+}
+.top-bar .form-group{
+    margin: 0px;
+}
+.top-bar .form-control:focus{
+    width:200px;
+}

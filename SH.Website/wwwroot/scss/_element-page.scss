@@ -1,0 +1,32 @@
+/****************elements.html******************/
+.grid-wrap h4{
+  display: block;
+  line-height: 35px;
+  text-align: center;
+  background-color: #f9f9fa;
+  border:1px solid #ddd;
+}
+.element-buttons a{
+  margin-bottom: 10px;
+  margin-right: 5px;
+}
+// only found in element.html
+.popover-test button{
+  margin: 5px;
+}
+// .form-element can only be found in element.html
+.form-element .form-control{
+  height: 31px;
+}
+
+// see #cta-2 in element.html
+#cta-2{
+  padding: 30px 0;
+  background-color: #f2f2f2;
+  text-align: center;
+}
+#cta-2 h1{
+  color:#333;
+  margin-bottom: 15px;
+  font-weight: 400;
+}

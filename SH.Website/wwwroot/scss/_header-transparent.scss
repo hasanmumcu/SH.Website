@@ -1,0 +1,12 @@
+/******************only used at header-transparent.html*****************************/
+.navbar-inverse.transparent-header{
+  background-color: transparent;
+  @include box-shadow (none);
+  padding: 10px 0px;
+  min-height: 50px;
+}
+@media(max-width:767px){
+  .navbar-inverse.transparent-header{
+    background-color: #111 !important;
+  }  
+}

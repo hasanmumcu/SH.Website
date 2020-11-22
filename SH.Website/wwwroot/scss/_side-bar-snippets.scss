@@ -1,0 +1,84 @@
+/*****sidebar, found many using in blogs, like you see in right side of blog-2col.html****/
+/* include search*/
+.sidebar-box h4{
+  font-size: 14px;
+  font-weight: 700;
+  color: #444;
+  text-transform: uppercase;
+}
+.search-widget{
+  position: relative;
+  i{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color:#777;
+  }
+}
+.cat-list li {
+  padding: 5px 0;
+  border-bottom: 1px solid #e5e5e5;
+  a {
+    color: #888;
+    margin-right: 10px;
+    &:hover {
+      color: $skincolor;
+    }
+  }
+  i {
+    color: #888;
+    margin-right: 10px;
+    @include transition(all 0.3s ease-in-out) ;
+  }
+  &:hover i {
+    margin-left: 5px;
+  }
+}
+
+.popular-post li{
+  padding-bottom: 20px;
+  .popular-img{
+    float: left;
+    margin-right: 10px;
+    a img{
+      width:60px;
+      height: 60px;
+    }
+  }
+  .popular-desc{
+    display: table;
+    h5 {
+      font-size: 17px;
+      margin-bottom: 6px;
+      a {
+        color: #000;
+        font-weight: 600;
+        font-size: 13px;
+        &:hover {
+          color: $skincolor;
+        }
+      }
+    }
+    h6 {
+      color: #777;
+      font-style: normal;
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
+
+.tag-list a{
+  display: inline-block;
+  margin-right: 0px;
+  margin-bottom: 3px;
+  padding: 3px 6px;
+  color: #777;
+  font-size: 12px !important;
+  background-color: #e5e5e5;
+  &:hover {
+    background-color: #666;
+    color:#fff;
+  }
+}
+/*side bar ends*/

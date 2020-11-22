@@ -1,0 +1,40 @@
+/***************about me*********************/
+.me-intro{
+  background: url(../img/showcase-2.jpg);
+  padding: 200px 0; 
+}
+.me-intro h2{
+  color:#fff;  
+  font-weight: 700;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+}
+.me-intro p{
+  color:#fff;
+}
+.me-hobbies h4 i{
+  margin-right: 10px;
+  color:$skincolor;
+  font-size: 25px;
+}
+.services-me li{
+  padding: 10px 0;
+  font-size: 20px;
+}
+.services-me li i{
+  margin-right: 10px;
+  width:50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  font-size: 18px;
+  background-color: #e5e5e5;
+  color:$skincolor;
+}
+.contact-me{
+  background-color: #eee;
+  padding: 40px 0;
+}

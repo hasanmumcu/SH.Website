@@ -1,0 +1,53 @@
+
+/****fun facts*****/
+.fun-fact-wrap{
+  background: url(../img/showcase-4.jpg);
+  background-repeat: repeat !important;
+  padding-top:100px;
+  padding-bottom: 70px;
+}
+.facts-in{
+  text-align: center;
+}
+.facts-in h3{
+  margin-bottom: 25px;
+  font-size: 50px;
+  font-weight: 700;
+  color:#fff;
+}
+.facts-in h3 i{
+  font-size: 40px;
+  margin-right: 20px;
+  color:$skincolor;
+}
+.facts-in h4{
+  margin-bottom: 0px;
+  color:#fff;
+  font-family: $primary-font;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+@media(max-width:992px){
+  .facts-in{
+    margin-bottom: 70px;
+  }
+}
+
+.fun-fact-wrap-light{
+  background-color: #eee;
+  padding-top: 100px;
+  padding-bottom: 70px;
+}
+.fun-fact-wrap-light .facts-in h3 .counter{
+  color:#000;
+}
+.fun-fact-wrap-light .facts-in h4{
+  color:#000;
+  font-family: $primary-font;
+  font-weight: 400;
+  text-transform: lowercase;
+  font-style: normal;
+}
+.fun-facts-bg{
+  background: $skincolor;
+}

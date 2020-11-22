@@ -1,0 +1,97 @@
+/***************css for "home-events.html"  ****************/
+.events-bg{
+  background: url(../img/showcase-1.jpg);
+  padding: 150px 0;
+}
+.events-bg h2{
+  text-transform: uppercase;
+  color:#fff;  
+  margin-bottom: 20px;
+  font-size: 40px;
+  font-weight: 700;
+}
+.events-bg h4{
+  color:#fff;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+.event-digit-box h1{
+  font-weight: 400;
+  color:#777;
+  margin-bottom: 25px;
+}
+.event-digit-box h4{
+  color:#000;
+  font-size: 15px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.event-speakers{
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background-color: #f7f7f7;
+}
+.event-box {
+  padding: 15px;
+  background-color: #fff;
+  border: 2px solid #f5f5f5;
+  margin-bottom: 15px;
+}
+.event-box .author{
+  color:#000;
+  font-weight: 700;
+  display: block;
+
+}
+.event-box .title{
+  margin: 15px 0;
+}
+.event-box .time{
+  padding: 6px 12px;
+  display: inline-block;
+  color:#fff;
+  background-color: $skincolor;
+}
+.event-box p{
+  font-size: 13px;
+}
+
+.event-gallery{
+  padding: 80px 0;
+  background-color: #eee;
+}
+.register-event{
+  background: url(../img/showcase-4.jpg) ;
+  padding: 100px 0;
+}
+.register-event .center-heading h2{
+  color:#fff;
+}
+.register-event .center-heading p{
+  color:#fff;
+}
+.event-price-box{
+  padding: 45px 15px;
+  background-color: rgba(0,0,0,0.4);
+  text-align: center;
+}
+.event-price-box h3{
+  font-size: 50px;
+  font-weight: 700;
+  margin-bottom: 25px;
+}
+.event-price-box h5{
+  font-size: 20px;
+  margin: 0px;
+  text-transform: capitalize;
+}
+.event-price-box h3, .event-price-box h5{
+  color:#fff;
+}
+.register-text-box{
+  text-align: center;
+}
+.register-text-box h3{
+  color:#fff;    
+}

@@ -1,0 +1,22 @@
+/***home boxed***/
+#boxed{
+  background-color: #f8f8f8;
+}
+
+@media(min-width:1200px){
+  .boxed-wrapper{
+    margin: 0  auto;
+    width:1170px;    
+    background-color: white;
+    @include box-shadow (0px 0px 25px rgba(0, 0, 0, 0.16));
+  }
+
+}
+.boxed-wrapper .tp-banner-container{
+  margin: 0px auto;  
+}
+.boxed-wrapper .navbar-default{
+  left: auto;
+  width:auto;
+  right: auto;
+}

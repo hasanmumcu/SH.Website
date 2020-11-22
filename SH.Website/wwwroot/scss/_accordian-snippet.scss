@@ -1,0 +1,34 @@
+
+/*****accordions****/
+/*** Accordion decoration, can be found in faq.html ***/
+.panel-group {
+  @include box-shadow(0 0 1px rgba(0, 0, 0, 0.05));
+  .panel {
+    @include box-shadow(none);
+    + .panel {
+      margin-top: -2px;
+    }
+  }
+  .panel-heading {
+    padding: 0;
+    background: white;
+    @include box-shadow(none);
+    a {
+      position: relative;
+      display: block;
+      padding: 12px 40px 12px 10px;
+      font-size: 16px;
+      color: #505050;
+      line-height: 1.5;
+      text-transform: none;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
+  .panel-body {
+    font-size: 13px;
+    background: #f9f9f9;
+    @include box-shadow(inset 0 0 3px 1px rgba(0, 0, 0, 0.03));
+    font-family: $primary-font;
+  }
+}

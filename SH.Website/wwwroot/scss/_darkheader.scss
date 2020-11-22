@@ -1,0 +1,51 @@
+
+/***********bootstrap navigation default overrides--*/
+.navbar-inverse {
+  font-family: $primary-font;
+  border:none;
+  @include border-radius (0px);
+  margin-bottom: 0;
+  width:100%;
+  min-height: 70px;
+  padding: 10px 0;
+  @include box-shadow (-1px 1px 1px rgba(0,0,0,0.1));
+  background-color:#333;
+  @include transition (all 0.4s ease-in-out);
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
+  color: $skincolor;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-nav>.open>a, .navbar-inverse .navbar-nav>.open>a:hover, .navbar-inverse .navbar-nav>.open>a:focus {
+  color: $skincolor;
+  background-color: transparent;
+}
+.navbar-inverse .navbar-brand{
+  font-weight: 700;
+  color:#fff !important;
+  font-size: 30px;
+  line-height: 20px;
+  font-style: normal;
+  text-transform: uppercase;
+}
+.navbar-inverse .navbar-nav>li>a {
+  color: #fff;
+  font-weight: 400;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.navbar-inverse .navbar-nav>li>a:hover {
+  color: $skincolor;
+
+}
+#header-top.dark-header-top{
+  background-color: #111;
+  border-bottom-color: #222;
+}
+#header-top.dark-header-top .top-bar a i{
+  color:#fff;   
+}
+#header-top.dark-header-top .top-bar ul li{
+  color:#fff;
+}

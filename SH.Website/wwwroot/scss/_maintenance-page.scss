@@ -1,0 +1,56 @@
+/************maintenance page***************/
+.maintenance-page{
+  background-color: #ddd;
+}
+.maintenance-page .main-text{
+  font-size: 40px;
+  font-weight: 400;
+  font-style: normal;
+}
+.maintenance-page .main-text span{
+  font-size: 20px;
+  font-weight: 400;
+  display: block;
+  font-style: normal;
+  margin-top: 30px;
+}
+.maintenance-box h4{
+  color:#000;
+  font-weight: 400;
+}
+.maintenance-box i{
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+/****dropdown login***/
+.dropdown-login-box {
+  overflow: hidden;
+  padding: 15px !important;
+  min-width: 300px !important;
+  background-color: #fff !important;
+}
+.dropdown-login-box .btn {
+  margin-top: 10px;
+}
+.dropdown-login-box h4 {
+  margin: 5px 0 10px 0;
+}
+.dropdown-login-box h4 em{
+  font-size: 12px;
+  color:$skincolor;
+  font-weight: 400;
+}
+.dropdown-login-box input[type=checkbox] {
+  margin: 5px -20px 0;
+  line-height: normal;
+}
+.dropdown-login-box p{
+  margin: 0;
+}
+.dropdown-login-box p a{
+  color:$skincolor;
+}
+.dropdown-login-box p a:hover{
+  color:$skincolor;
+  text-decoration: underline;
+}
