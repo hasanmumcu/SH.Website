@@ -1,12 +1,12 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Threading.Tasks;
-//using Microsoft.AspNetCore.Identity;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 
-//namespace SH.Website.Authentication
-//{
-//    public class ApplicationUser : IdentityUser
-//    {
-//    }
-//}
+namespace SH.Website.Authentication
+{
+    public class ApplicationUser : IdentityUser
+    {
+    }
+}

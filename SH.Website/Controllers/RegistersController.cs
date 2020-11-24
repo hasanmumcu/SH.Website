@@ -26,22 +26,22 @@ namespace SH.Website.Controllers
             _factory = factory;
         }
 
-
+        //[Bind("Username, Email, Password, ConfirmPassword")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         [AllowAnonymous]
-        public async Task<IActionResult> Create([Bind("Username, Email, Password, ConfirmPassword")] RegisterViewModel viewModel)
+        public async Task<IActionResult> Create(RegisterViewModel viewModel)
         {
             if (ModelState.IsValid)
             {
 
                 if (await _factory.PostRegisterViewModel(viewModel))
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Login", "Home");
                 }
 
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Home");
         }
 
 

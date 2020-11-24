@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SH.Website.Data;
+using SH.Website.Authentication;
 using SH.Website.Models;
 using SH.Website.Services;
 
@@ -30,7 +28,37 @@ namespace SH.Website.Controllers
             return View(await _factory.GetIndexViewModel());
         }
 
+        //public IActionResult Login()
+        //{
+        //    return View();
+        //}
         public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult LoginUser(User user)
+        {
+
+            TokenProvider _tokenProvider = new TokenProvider();
+            //Authenticate user
+            var userToken = _tokenProvider.LoginUser(user.Email.Trim(), user.Password.Trim());
+            if (userToken != null)
+            {
+                //Save token in session object
+                HttpContext.Session.SetString("JWToken", userToken);
+            }
+            return Redirect("~/Home/Login");
+        }
+        public IActionResult Logoff()
+        {
+            HttpContext.Session.Clear();
+            return Redirect("~/Home/Index");
+        }
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult User()
         {
             return View();
         }

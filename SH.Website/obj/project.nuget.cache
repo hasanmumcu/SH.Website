@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "S70kWQBdmXMKTvE/Fce3ZdYUBqziRvhYHoA3IERIl9Q6T29pub32MvXenFgP4/GPCuYLDw7fd9Qu0/nFUnYd8g==",
+  "dgSpecHash": "4OtTHwI9R34pbBvvjSpIdoBFQusWuGqCT83ZZ02dJblC9/UATExsR/JZ9qllamiTPu20LfkZrJe6uxuYF7pRAg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hasan\\source\\repos\\SH.Website\\SH.Website\\SH.Website.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Hasan\\.nuget\\packages\\aspnet.security.oauth.validation\\2.0.0\\aspnet.security.oauth.validation.2.0.0.nupkg.sha512",
     "C:\\Users\\Hasan\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Hasan\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\Hasan\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Hasan\\.nuget\\packages\\identitymodel\\4.4.0\\identitymodel.4.4.0.nupkg.sha512",
     "C:\\Users\\Hasan\\.nuget\\packages\\identityserver4\\4.1.1\\identityserver4.4.1.1.nupkg.sha512",

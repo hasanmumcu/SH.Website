@@ -1,125 +1,123 @@
-﻿
-//using microsoft.aspnetcore.http;
-//using microsoft.aspnetcore.ıdentity;
-//using microsoft.aspnetcore.mvc;
-//using microsoft.extensions.configuration;
-//using microsoft.ıdentitymodel.tokens;
-//using sh.website.authentication;
-//using sh.website.models;
-//using system;
-//using system.collections.generic;
-//using system.ıdentitymodel.tokens.jwt;
-//using system.security.claims;
-//using system.text;
-//using system.threading.tasks;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
+using SH.Website.Authentication;
+using SH.Website.Models;
+using System;
+using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
+using System.Threading.Tasks;
 
-//namespace sh.website.controllers
+namespace SH.Website.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class AuthenticateController : ControllerBase
+    {
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
+        private readonly IConfiguration _configuration;
 
-//{
-//    [route("api/[controller]")]
-//    [apicontroller]
-//    public class authenticatecontroller : controllerbase
-//    {
-//        private readonly usermanager<applicationuser> usermanager;
-//        private readonly rolemanager<ıdentityrole> rolemanager;
-//        private readonly ıconfiguration _configuration;
+        public AuthenticateController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        {
+            this.userManager = userManager;
+            this.roleManager = roleManager;
+            _configuration = configuration;
+        }
 
-//        public authenticatecontroller(usermanager<applicationuser> usermanager, rolemanager<ıdentityrole> rolemanager, ıconfiguration configuration)
-//        {
-//            this.usermanager = usermanager;
-//            this.rolemanager = rolemanager;
-//            _configuration = configuration;
-//        }
+        [HttpPost]
+        [Route("login")]
+        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        {
+            var user = await userManager.FindByNameAsync(model.Email);
+            if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
+            {
+                var userRoles = await userManager.GetRolesAsync(user);
 
-//        [httppost]
-//        [route("login")]
-//        public async task<ıactionresult> login([frombody] loginmodel model)
-//        {
-//            var user = await usermanager.findbynameasync(model.username);
-//            if (user != null && await usermanager.checkpasswordasync(user, model.password))
-//            {
-//                var userroles = await usermanager.getrolesasync(user);
+                var authClaims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                };
 
-//                var authclaims = new list<claim>
-//                {
-//                    new claim(claimtypes.name, user.username),
-//                    new claim(jwtregisteredclaimnames.jti, guid.newguid().tostring()),
-//                };
+                foreach (var userRole in userRoles)
+                {
+                    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
+                }
 
-//                foreach (var userrole in userroles)
-//                {
-//                    authclaims.add(new claim(claimtypes.role, userrole));
-//                }
+                var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
 
-//                var authsigningkey = new symmetricsecuritykey(encoding.utf8.getbytes(_configuration["jwt:secret"]));
+                var token = new JwtSecurityToken(
+                    issuer: _configuration["JWT:ValidIssuer"],
+                    audience: _configuration["JWT:ValidAudience"],
+                    expires: DateTime.Now.AddHours(3),
+                    claims: authClaims,
+                    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
+                    );
 
-//                var token = new jwtsecuritytoken(
-//                    issuer: _configuration["jwt:validıssuer"],
-//                    audience: _configuration["jwt:validaudience"],
-//                    expires: datetime.now.addhours(3),
-//                    claims: authclaims,
-//                    signingcredentials: new signingcredentials(authsigningkey, securityalgorithms.hmacsha256)
-//                    );
+                return Ok(new
+                {
+                    token = new JwtSecurityTokenHandler().WriteToken(token),
+                    expiration = token.ValidTo
+                });
+            }
+            return Unauthorized();
+        }
 
-//                return ok(new
-//                {
-//                    token = new jwtsecuritytokenhandler().writetoken(token),
-//                    expiration = token.validto
-//                });
-//            }
-//            return unauthorized();
-//        }
+        [HttpPost]
+        [Route("register")]
+        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        {
+            var userExists = await userManager.FindByNameAsync(model.Name);
+            if (userExists != null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
-//        [httppost]
-//        [route("register")]
-//        public async task<ıactionresult> register([frombody] registermodel model)
-//        {
-//            var userexists = await usermanager.findbynameasync(model.username);
-//            if (userexists != null)
-//                return statuscode(statuscodes.status500ınternalservererror, new response { status = "error", message = "user already exists!" });
+            ApplicationUser user = new ApplicationUser()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.Name
+            };
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
-//            applicationuser user = new applicationuser()
-//            {
-//                email = model.email,
-//                securitystamp = guid.newguid().tostring(),
-//                username = model.username
-//            };
-//            var result = await usermanager.createasync(user, model.password);
-//            if (!result.succeeded)
-//                return statuscode(statuscodes.status500ınternalservererror, new response { status = "error", message = "user creation failed! please check user details and try again." });
+            return Ok(new Response { Status = "Success", Message = "User created successfully!" });
+        }
 
-//            return ok(new response { status = "success", message = "user created successfully!" });
-//        }
+        [HttpPost]
+        [Route("register-admin")]
+        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
+        {
+            var userExists = await userManager.FindByNameAsync(model.Name);
+            if (userExists != null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
 
-//        [httppost]
-//        [route("register-admin")]
-//        public async task<ıactionresult> registeradmin([frombody] registermodel model)
-//        {
-//            var userexists = await usermanager.findbynameasync(model.username);
-//            if (userexists != null)
-//                return statuscode(statuscodes.status500ınternalservererror, new response { status = "error", message = "user already exists!" });
+            ApplicationUser user = new ApplicationUser()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.Name
+            };
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
 
-//            applicationuser user = new applicationuser()
-//            {
-//                email = model.email,
-//                securitystamp = guid.newguid().tostring(),
-//                username = model.username
-//            };
-//            var result = await usermanager.createasync(user, model.password);
-//            if (!result.succeeded)
-//                return statuscode(statuscodes.status500ınternalservererror, new response { status = "error", message = "user creation failed! please check user details and try again." });
+            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
-//            if (!await rolemanager.roleexistsasync(userroles.admin))
-//                await rolemanager.createasync(new ıdentityrole(userroles.admin));
-//            if (!await rolemanager.roleexistsasync(userroles.user))
-//                await rolemanager.createasync(new ıdentityrole(userroles.user));
+            if (await roleManager.RoleExistsAsync(UserRoles.Admin))
+            {
+                await userManager.AddToRoleAsync(user, UserRoles.Admin);
+            }
 
-//            if (await rolemanager.roleexistsasync(userroles.admin))
-//            {
-//                await usermanager.addtoroleasync(user, userroles.admin);
-//            }
-
-//            return ok(new response { status = "success", message = "user created successfully!" });
-//        }
-//    }
-//}
+            return Ok(new Response { Status = "Success", Message = "User created successfully!" });
+        }
+    }
+}

@@ -16,6 +16,8 @@ using SH.Website.Services;
 namespace SH.Website.Controllers
 {
     [Authorize]
+    [ApiController]
+    [Route("[Controller]")]
     public class LoginsController : Controller
     {
         private readonly IApplicationDbContext _context;

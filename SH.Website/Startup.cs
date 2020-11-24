@@ -16,10 +16,11 @@ using SH.Website.Services;
 using AutoMapper;
 using SH.Website.Models.ViewModels;
 using SH.Website.Models;
-
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace SH.Website
 {
@@ -35,34 +36,50 @@ namespace SH.Website
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
             //services.AddControllers();
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            //services.AddIdentity<ApplicationUser, IdentityRole>()
-            //    .AddEntityFrameworkStores<ApplicationDbContext>()
-            //    .AddDefaultTokenProviders();
-            //services.AddAuthentication(options =>
-            //{
-            //    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            //    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-            //})
-                //.AddJwtBearer(options =>
-                //{
-                //    options.SaveToken = true;
-                //    options.RequireHttpsMetadata = false;
-                //    options.TokenValidationParameters = new TokenValidationParameters()
-                //    {
-                //        ValidateIssuer = true,
-                //        ValidateAudience = true,
-                //        ValidAudience = Configuration["JWT:ValidAudience"],
-                //        ValidIssuer = Configuration["JWT:ValidIssuer"],
-                //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
-                //    };
-                //});
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddSession(options => {
+                options.IdleTimeout = TimeSpan.FromMinutes(60);
+            });
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            //Provide a secret key to Encrypt and Decrypt the Token
+            var SecretKey = Encoding.ASCII.GetBytes
+                 ("YourKey-2374-OFFKDI940NG7:56753253-tyuw-5769-0921-kfirox29zoxv");
+            //Configure JWT Token Authentication
+            services.AddAuthentication(auth =>
+            {
+                auth.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                auth.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(token =>
+            {
+                token.RequireHttpsMetadata = false;
+                token.SaveToken = true;
+                token.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+            //Same Secret key will be used while creating the token
+            IssuerSigningKey = new SymmetricSecurityKey(SecretKey),
+                    ValidateIssuer = true,
+            //Usually, this is your application base URL
+            ValidIssuer = "http://localhost:45092/",
+                    ValidateAudience = true,
+            //Here, we are creating and using JWT within the same application.
+            //In this case, base URL is fine.
+            //If the JWT is created using a web service, then this would be the consumer URL.
+            ValidAudience = "http://localhost:45092/",
+                    RequireExpirationTime = true,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                };
+            });
+            //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //    .AddEntityFrameworkStores<ApplicationDbContext>();
+
             services.AddControllersWithViews();
             services.AddRazorPages();
 
@@ -70,11 +87,25 @@ namespace SH.Website
             services.AddTransient<IDAL,DAL>();
             services.AddTransient<IFactory, Factory>();
 
-            var mapper = new MapperConfiguration(c =>
+            var mapperConfig = new MapperConfiguration(mc =>
             {
-                c.CreateMap<ContactModel, ContactViewModel>().ReverseMap();
-            }).CreateMapper();
+                mc.AddProfile(new MappingProfile());
+            });
+
+            IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+
+            services.AddMvc();
+
+            //var mapper = new MapperConfiguration(c =>
+            //{
+                
+            //    c.CreateMap<ContactModel, ContactViewModel>().ReverseMap();
+            //    c.CreateMap<RegisterModel, RegisterViewModel>().ReverseMap();
+              
+            //}).CreateMapper();
+            //services.AddSingleton(mapper);
+            
 
             //var mappe = new MapperConfiguration(c =>
             //{
@@ -111,10 +142,22 @@ namespace SH.Website
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
-            app.UseRouting();
+            app.UseCookiePolicy();
+            app.UseSession();
+            app.Use(async (context, next) =>
+            {
+                var JWToken = context.Session.GetString("JWToken");
+                if (!string.IsNullOrEmpty(JWToken))
+                {
+                    context.Request.Headers.Add("Authorization", "Bearer " + JWToken);
+                }
+                await next();
+            });
 
             app.UseAuthentication();
+            app.UseRouting();
+
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
