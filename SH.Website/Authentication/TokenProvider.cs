@@ -30,7 +30,7 @@ namespace SH.Website.Authentication
         }
         public List<User> HasRows()
         {
-            using (var connection = new SqlConnection( "Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebSite;Integrated Security=True;MultipleActiveResultSets=true"))
+            using (var connection = new SqlConnection( "Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.Web;Integrated Security=True;MultipleActiveResultSets=true"))
             {
                 SqlCommand command = new SqlCommand(
                   "SELECT * FROM dbo.Registers;",
@@ -52,7 +52,9 @@ namespace SH.Website.Authentication
                             Password = reader.GetString(3),
                             ConfirmPassword = reader.GetString(4),
                             Active = reader.GetBoolean(5),
-                            TimeStamp = reader.GetDateTime(6)
+                            TimeStamp = reader.GetDateTime(6),
+                            ACCESS_LEVEL = Roles.DIRECTOR.ToString(),
+                            WRITE_ACCESS = "WRITE_ACCESS"
                         };
                         UserList.Add(user);
                     }
@@ -74,8 +76,8 @@ namespace SH.Website.Authentication
                  new Claim("USERID", user.UserId.ToString()),
                  new Claim("EMAILID", user.Email),
                  new Claim("PASSWORD", user.Password),
-                 //new Claim("ACCESS_LEVEL", user.ACCESS_LEVEL.ToUpper()),
-                 //new Claim("READ_ONLY", user.READ_ONLY.ToUpper())
+                 new Claim("ACCESS_LEVEL", user.ACCESS_LEVEL.ToUpper()),
+                 new Claim("WRITE_ACCESS", user.WRITE_ACCESS.ToUpper())
             };
             return claims;
         }

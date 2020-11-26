@@ -8,52 +8,105 @@
 <script src="~/assets/js/lightbox.js"></script>
 <script src="~/assets/js/custom.js"></script>
 <script>
-      //according to loftblog tut
-      $(".main-menu li:first").addClass("active");
+    //according to loftblog tut
+    $(".main-menu li:first").addClass("active");
 
-      var showSection = function showSection(section, isAnimate) {
+    var showSection = function showSection(section, isAnimate) {
         var direction = section.replace(/#/, ""),
-          reqSection = $(".section").filter(
-            '[data-section="' + direction + '"]'
-          ),
-          reqSectionPos = reqSection.offset().top - 0;
+            reqSection = $(".section").filter(
+                '[data-section="' + direction + '"]'
+            ),
+            reqSectionPos = reqSection.offset().top - 0;
 
         if (isAnimate) {
-          $("body, html").animate(
-            {
-              scrollTop: reqSectionPos
-            },
-            800
-          );
+            $("body, html").animate(
+                {
+                    scrollTop: reqSectionPos
+                },
+                800
+            );
         } else {
-          $("body, html").scrollTop(reqSectionPos);
+            $("body, html").scrollTop(reqSectionPos);
         }
-      };
+    };
 
-      var checkSection = function checkSection() {
-        $(".section").each(function() {
-          var $this = $(this),
-            topEdge = $this.offset().top - 80,
-            bottomEdge = topEdge + $this.height(),
-            wScroll = $(window).scrollTop();
-          if (topEdge < wScroll && bottomEdge > wScroll) {
-            var currentId = $this.data("section"),
-              reqLink = $("a").filter("[href*=\\#" + currentId + "]");
-            reqLink
-              .closest("li")
-              .addClass("active")
-              .siblings()
-              .removeClass("active");
-          }
+    var checkSection = function checkSection() {
+        $(".section").each(function () {
+            var $this = $(this),
+                topEdge = $this.offset().top - 80,
+                bottomEdge = topEdge + $this.height(),
+                wScroll = $(window).scrollTop();
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+                var currentId = $this.data("section"),
+                    reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+                reqLink
+                    .closest("li")
+                    .addClass("active")
+                    .siblings()
+                    .removeClass("active");
+            }
         });
-      };
+    };
 
-      $(".main-menu").on("click", "a", function(e) {
+    $(".main-menu").on("click", "a", function (e) {
         e.preventDefault();
         showSection($(this).attr("href"), true);
-      });
+    });
 
-      $(window).scroll(function() {
+    $(window).scroll(function () {
         checkSection();
-      });
+    });
+</script>
+<script>
+    $(document).ajaxError(function (xhr, result) {
+        //Catch Ajax error with http status code 403 Forbidden
+        //and 401 Unauthorized – Jrozario
+        if (result.status === 403) {
+            window.location.href = '/Home/Login';
+        }
+        if (result.status === 401) {
+            window.location.href = '/Dashboard/NoPermission';
+        }
+    });
+</script>    
+<script>
+    function OnClick_EndSession() {
+        $.ajax({
+            type: 'GET',
+            url: '/Home/EndSession',
+            data: {},
+            cache: false,
+            success: function (result) { }
+        });
+        alert("End of User Session,
+        Click on Ajax Call button to autneticate Ajax calls,
+            It should take you to login page.");
+    }
+
+    function OnClick_AuthenticateAjaxCall() {
+        $.ajax({
+            type: 'GET',
+            url: '/Dashboard/AuthenticateAjaxCalls',
+            data: {},
+            cache: false,
+            success: function (result) {
+                if (result != "")
+                    alert("Your session is still active,
+                    end session to see how authentication for Ajax call works!");
+            }
+        });
+    }
+
+    function OnClick_AuthorizeAjaxCall() {
+        $.ajax({
+            type: 'GET',
+            url: '/Dashboard/AuthorizeAjaxCalls',
+            data: {},
+            cache: false,
+            success: function (result) {
+                if (result != "")
+                    alert("Your have permission for this Ajax call!");
+            }
+        });
+    }
 </script>

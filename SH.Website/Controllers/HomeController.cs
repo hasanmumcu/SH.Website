@@ -6,10 +6,11 @@ using Microsoft.Extensions.Logging;
 using SH.Website.Authentication;
 using SH.Website.Models;
 using SH.Website.Services;
+using System.Security.Principal;
 
 namespace SH.Website.Controllers
 {
-
+    //[Authorize(Roles.DIRECTOR, Roles.USER, Roles.ANALYST)]
     public class HomeController : Controller
     {
         protected IFactory _factory;
@@ -36,6 +37,10 @@ namespace SH.Website.Controllers
         {
             return View();
         }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
         public IActionResult LoginUser(User user)
         {
 
@@ -54,6 +59,7 @@ namespace SH.Website.Controllers
             HttpContext.Session.Clear();
             return Redirect("~/Home/Index");
         }
+
         public IActionResult Register()
         {
             return View();

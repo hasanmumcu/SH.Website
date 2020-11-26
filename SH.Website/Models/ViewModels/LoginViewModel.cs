@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 
+
 namespace SH.Website.Models.ViewModels
 {
     public class LoginViewModel : BaseViewModel

@@ -1,16 +1,22 @@
 ﻿@model SH.Website.Models.ViewModels.LoginViewModel
+
 @{
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
 @{
     ViewBag.Title = "Login";
 }
-@if (User.Identity.IsAuthenticated)
+@if (User.Identity.HavePermission("WRITE_ACCESS") == true)
 {
 
-    //redirect to home page
     <script type="text/javascript">
-    window.location.href = "@Url.Action("User","Home")";
+    window.location.href = "@Url.Action("Dashboard", "Home")";
+    </script>
+}
+else if (User.IsInRole("USER"))
+{
+    <script type="text/javascript">
+    window.location.href = "@Url.Action("User", "Home")";
     </script>
 }
 else

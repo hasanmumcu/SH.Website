@@ -15,7 +15,7 @@ namespace SH.Website.Models
         public string ConfirmPassword { get; set; }
         public Boolean Active { get; set; }
         public DateTime TimeStamp { get; set; }
-        public string READ_ONLY { get; internal set; }
+        public string WRITE_ACCESS { get; internal set; }
         public string ACCESS_LEVEL { get; internal set; }
     }
 }
