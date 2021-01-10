@@ -41,7 +41,7 @@ To use a built-in icon from the Ionicons package, populate the `name` attribute 
 <ion-icon name="heart"></ion-icon>
 ```
 
-To use a custom SVG, provide its url in the `src` attribute to request the external SVG file. The `src` attribute works the same as `<img src="...">` in that the url must be accessible from the webpage that's making a request for the image. Additionally, the external file can only be a valid svg and does not allow scripts or events within the svg element.
+To use a custom SVG, provide its url in the `src` attribute to request the external SVG file. The `src` attribute works the same as `<img src="~/dashboard-template/pages.">` in that the url must be accessible from the webpage that's making a request for the image. Additionally, the external file can only be a valid svg and does not allow scripts or events within the svg element.
 
 ```html
 <ion-icon src="/path/to/external/file.svg"></ion-icon>

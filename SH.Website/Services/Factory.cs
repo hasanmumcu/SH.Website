@@ -92,5 +92,21 @@ namespace SH.Website.Services
             return false;
 
         }
+
+        public async Task<bool> PostAdminContactViewModel(AdminContactViewModel viewModel)
+        {
+            try
+            {
+                if (await _dal.PostAdminContact(_mapper.Map<AdminContactModel>(viewModel)) != null)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
     }
 }

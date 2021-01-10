@@ -1,34 +1,38 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin Premium Bootstrap Admin Dashboard Template</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="~/assets/vendors/iconfonts/mdi/css/materialdesignicons.min.css">
-    <link rel="stylesheet" href="~/assets/vendors/iconfonts/ionicons/dist/css/ionicons.css">
-    <link rel="stylesheet" href="~/assets/vendors/iconfonts/flag-icon-css/css/flag-icon.min.css">
-    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.base.css">
-    <link rel="stylesheet" href="~/assets/vendors/css/vendor.bundle.addons.css">
-    <!-- endinject -->
-    <!-- plugin css for this page -->
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <link rel="stylesheet" href="~/bootstrap/css/shared/style.css">
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="~/bootstrap/css/demo_1/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AdminLTE 3 | Dashboard</title>
 
-    <!-- End Layout styles -->
-    <link rel="shortcut icon" href="~/images/favicon.ico" />
-</head>>
-    <body>
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/dashboard-template/docs/assets/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Tempusdominus Bootstrap 4 -->
+    <link rel="stylesheet" href="~/dashboard-template/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <!-- iCheck -->
+    <link rel="stylesheet" href="~/dashboard-template/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- JQVMap -->
+    <link rel="stylesheet" href="~/dashboard-template/plugins/jqvmap/jqvmap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dashboard-template/dist/css/adminlte.min.css">
+    <!-- overlayScrollbars -->
+    <link rel="stylesheet" href="~/dashboard-template/docs/assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <!-- Daterange picker -->
+    <link rel="stylesheet" href="~/dashboard-template/plugins/daterangepicker/daterangepicker.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/dashboard-template/plugins/summernote/summernote-bs4.min.css">
+</head>
 
-        @RenderBody()
-        @{ Html.RenderPartial("_DashboardFooter");}
-        @{ Html.RenderPartial("_DashboardScriptsTemplate");}
-        @RenderSection("Scripts", required: false)
+<body class="hold-transition sidebar-mini layout-fixed">
 
-    </body>
+    @RenderBody()
+    @{ Html.RenderPartial("_DashboardFooter");}
+    @{ Html.RenderPartial("_DashboardScriptsTemplate");}
+    @RenderSection("Scripts", required: false)
+
+</body>
 </html>

@@ -9,5 +9,6 @@ namespace SH.Website.Services
         Task<ContactModel> PostContact(ContactModel model);
         Task<LoginModel> PostLogin(LoginModel model);
         Task<RegisterModel> PostRegister(RegisterModel model);
+        Task<AdminContactModel> PostAdminContact(AdminContactModel model);
     }
 }

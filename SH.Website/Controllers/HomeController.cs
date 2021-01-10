@@ -7,6 +7,8 @@ using SH.Website.Authentication;
 using SH.Website.Models;
 using SH.Website.Services;
 using System.Security.Principal;
+using System.Data.SqlClient;
+using System.Collections.Generic;
 
 namespace SH.Website.Controllers
 {
@@ -15,7 +17,10 @@ namespace SH.Website.Controllers
     {
         protected IFactory _factory;
         private readonly ILogger<HomeController> _logger;
-     
+        private readonly System.Collections.Generic.List<AdminContactModel> AdminContactList = new System.Collections.Generic.List<AdminContactModel>();
+
+
+
 
         public HomeController(ILogger<HomeController> logger, IFactory factory)
         {
@@ -72,6 +77,114 @@ namespace SH.Website.Controllers
         {
             return View();
         }
+        public IActionResult Compose()
+        {
+            return View();
+        }
+
+        public IActionResult MailBox()
+        {
+
+            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand command = new SqlCommand(
+                  "SELECT * FROM dbo.AdminContacts;",
+                  connection);
+                connection.Open();
+                
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        AdminContactModel adminContactModel = new AdminContactModel
+
+                        {
+
+                            Id = reader.GetGuid(0),
+                            to = reader.GetString(1),
+                            Subject = reader.GetString(2),
+                            Message = reader.GetString(3),
+                            Attachment = reader.GetString(4),
+                            Active = reader.GetBoolean(5),
+                            Timestamp = reader.GetDateTime(6)
+
+
+                        };
+                        AdminContactList.Add(adminContactModel);
+                        //ViewData["Message"] = adminContactModel;
+                        ViewBag.Message = AdminContactList;
+
+                        
+                    }
+                    return View();
+                }
+                else
+                {
+                    //  
+                }
+                reader.Close();
+
+            }
+
+            return View();
+
+        }
+        public IActionResult ReadMail()
+        {
+
+            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand command = new SqlCommand(
+                  "SELECT * FROM dbo.AdminContacts;",
+                  connection);
+                connection.Open();
+
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        AdminContactModel adminContactModel = new AdminContactModel
+
+                        {
+
+                            Id = reader.GetGuid(0),
+                            to = reader.GetString(1),
+                            Subject = reader.GetString(2),
+                            Message = reader.GetString(3),
+                            Attachment = reader.GetString(4),
+                            Active = reader.GetBoolean(5),
+                            Timestamp = reader.GetDateTime(6)
+
+
+                        };
+                        AdminContactList.Add(adminContactModel);
+                        //ViewData["Message"] = adminContactModel;
+                        ViewBag.Message = AdminContactList;
+
+
+                    }
+                    return View();
+                }
+                else
+                {
+                    //  
+                }
+                reader.Close();
+
+            }
+
+            return View();
+
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

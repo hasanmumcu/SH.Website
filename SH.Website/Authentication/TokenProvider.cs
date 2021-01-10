@@ -30,7 +30,7 @@ namespace SH.Website.Authentication
         }
         public List<User> HasRows()
         {
-            using (var connection = new SqlConnection( "Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.Web;Integrated Security=True;MultipleActiveResultSets=true"))
+            using (var connection = new SqlConnection( "Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebApp;Integrated Security=True;MultipleActiveResultSets=true"))
             {
                 SqlCommand command = new SqlCommand(
                   "SELECT * FROM dbo.Registers;",
@@ -43,20 +43,41 @@ namespace SH.Website.Authentication
                 {
                     while (reader.Read())
                     {
-                        User user = new User
+                        if (reader.GetString(5) != null && reader.GetString(6) != null)
                         {
+                            User user = new User
 
-                            UserId = reader.GetGuid(0),
-                            Name = reader.GetString(1),
-                            Email = reader.GetString(2),
-                            Password = reader.GetString(3),
-                            ConfirmPassword = reader.GetString(4),
-                            Active = reader.GetBoolean(5),
-                            TimeStamp = reader.GetDateTime(6),
-                            ACCESS_LEVEL = Roles.DIRECTOR.ToString(),
-                            WRITE_ACCESS = "WRITE_ACCESS"
-                        };
-                        UserList.Add(user);
+                            {
+
+                                UserId = reader.GetGuid(0),
+                                Name = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                Password = reader.GetString(3),
+                                ConfirmPassword = reader.GetString(4),
+                                Active = reader.GetBoolean(7),
+                                TimeStamp = reader.GetDateTime(8),
+                                ACCESS_LEVEL = reader.GetString(5),
+                                WRITE_ACCESS = reader.GetString(6)
+                            };
+                            UserList.Add(user);
+                        }
+                        else {
+                            User user = new User
+
+                            {
+
+                                UserId = reader.GetGuid(0),
+                                Name = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                Password = reader.GetString(3),
+                                ConfirmPassword = reader.GetString(4),
+                                Active = reader.GetBoolean(7),
+                                TimeStamp = reader.GetDateTime(8),
+                                ACCESS_LEVEL = Roles.USER.ToString(),
+                                WRITE_ACCESS = "WRITE_ACCESS"
+                            };
+                            UserList.Add(user);
+                        }
                     }
                 }              
                 else
@@ -81,7 +102,8 @@ namespace SH.Website.Authentication
             };
             return claims;
         }
-       
+
+
         public string LoginUser(string Email, string Password)
         {
             //Get user details for the user who is trying to login

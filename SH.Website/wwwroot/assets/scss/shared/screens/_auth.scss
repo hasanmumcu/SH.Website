@@ -10,12 +10,12 @@
   min-height: 100vh;
 
   &.auth-bg-1 {
-    background: url("../../images/auth/login_1.jpg");
+    background: url("~/dashboard-template/pages/../images/auth/login_1.jpg");
     background-size: cover;
   }
 
   &.register-bg-1 {
-    background: url("../../images/auth/register.jpg") center center no-repeat;
+    background: url("~/dashboard-template/pages/../images/auth/register.jpg") center center no-repeat;
     background-size: cover;
   }
 

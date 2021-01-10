@@ -8367,7 +8367,7 @@ pre {
   .card-weather .card-body {
     background: #ffffff; }
     .card-weather .card-body:first-child {
-      background: url("../../images/samples/weather.svg") no-repeat center;
+      background: url("~/dashboard-template/pages/../images/samples/weather.svg") no-repeat center;
       background-size: cover; }
   .card-weather .weather-date-location {
     padding: 0 0 38px; }
@@ -9757,10 +9757,10 @@ ul {
 .auth {
   min-height: 100vh; }
   .auth.auth-bg-1 {
-    background: url("../../images/auth/login_1.jpg");
+    background: url("~/dashboard-template/pages/../images/auth/login_1.jpg");
     background-size: cover; }
   .auth.register-bg-1 {
-    background: url("../../images/auth/register.jpg") center center no-repeat;
+    background: url("~/dashboard-template/pages/../images/auth/register.jpg") center center no-repeat;
     background-size: cover; }
   .auth.theme-one .auto-form-wrapper {
     background: #fff;

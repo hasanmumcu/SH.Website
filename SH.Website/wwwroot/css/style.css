@@ -1152,7 +1152,7 @@ TOP BARS
 
 .slider-overlay {
   background: rgba(0, 0, 0, 0.2);
-  background-image: url("../img/pattern.png");
+  background-image: url("~/dashboard-template/pages/img/pattern.png");
   background-repeat: repeat;
   position: absolute;
   top: 0;

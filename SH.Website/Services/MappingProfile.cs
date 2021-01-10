@@ -12,6 +12,7 @@ namespace SH.Website.Services
             CreateMap<ContactModel, ContactViewModel>().ReverseMap();
             CreateMap<RegisterModel, RegisterViewModel>().ReverseMap();
             CreateMap<LoginModel, LoginViewModel>().ReverseMap();
+            CreateMap<AdminContactModel, AdminContactViewModel>().ReverseMap();
         }
     }
 }

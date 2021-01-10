@@ -12,6 +12,7 @@ namespace SH.Website.Data
         DbSet<ContactModel> Contacts { get; set; }
         DbSet<LoginModel> Logins { get; set; }
         DbSet<RegisterModel> Registers { get; set; }
+        DbSet<AdminContactModel> AdminContacts { get; set; }
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default(CancellationToken));

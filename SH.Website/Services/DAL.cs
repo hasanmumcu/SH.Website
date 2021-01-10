@@ -41,6 +41,12 @@ namespace SH.Website.Services
             await _context.SaveChangesAsync();
             return model;
         }
+        public async Task<AdminContactModel> PostAdminContact(AdminContactModel model)
+        {
+            await _context.AdminContacts.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model;
+        }
 
     }
 }

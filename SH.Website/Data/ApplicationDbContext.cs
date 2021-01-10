@@ -25,6 +25,8 @@ namespace SH.Website.Data
         public DbSet<ContactModel> Contacts { get; set; }
         public DbSet<LoginModel> Logins { get; set; }
         public DbSet<RegisterModel> Registers { get; set; }
+        
+        public DbSet<AdminContactModel> AdminContacts { get; set; }
 
 
     }

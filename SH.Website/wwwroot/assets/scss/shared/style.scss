@@ -125,8 +125,8 @@
 
 /* === Import Bootstrap functions and variables === */
 
-@import "../../../../node_modules/bootstrap/scss/functions";
-@import "../../../../node_modules/bootstrap/scss/variables";
+@import "~/dashboard-template/pages/../../../node_modules/bootstrap/scss/functions";
+@import "~/dashboard-template/pages/../../../node_modules/bootstrap/scss/variables";
 /*-------------------------------------------------------------------*/
 
 /* === Import template variables === */
@@ -136,7 +136,7 @@
 
 /* === Boostrap Main SCSS === */
 
-@import "../../../../node_modules/bootstrap/scss/bootstrap";
+@import "~/dashboard-template/pages/../../../node_modules/bootstrap/scss/bootstrap";
 /*-------------------------------------------------------------------*/
 
 /* === Template mixins === */
