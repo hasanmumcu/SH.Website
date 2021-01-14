@@ -43,7 +43,26 @@ namespace SH.Website.Authentication
                 {
                     while (reader.Read())
                     {
-                        if (reader.GetString(5) != null && reader.GetString(6) != null)
+
+                        if (reader.GetString(5) == null && reader.GetString(6) == null)
+                        {
+                            User user = new User
+
+                            {
+
+                                UserId = reader.GetGuid(0),
+                                Name = reader.GetString(1),
+                                Email = reader.GetString(2),
+                                Password = reader.GetString(3),
+                                ConfirmPassword = reader.GetString(4),
+                                Active = reader.GetBoolean(7),
+                                TimeStamp = reader.GetDateTime(8),
+                                ACCESS_LEVEL = Roles.USER.ToString(),
+                                WRITE_ACCESS = "WRITE_ACCESS"
+                            };
+                            UserList.Add(user);
+                        }
+                        else if (reader.GetString(5) != null && reader.GetString(6) != null)
                         {
                             User user = new User
 
@@ -58,23 +77,6 @@ namespace SH.Website.Authentication
                                 TimeStamp = reader.GetDateTime(8),
                                 ACCESS_LEVEL = reader.GetString(5),
                                 WRITE_ACCESS = reader.GetString(6)
-                            };
-                            UserList.Add(user);
-                        }
-                        else {
-                            User user = new User
-
-                            {
-
-                                UserId = reader.GetGuid(0),
-                                Name = reader.GetString(1),
-                                Email = reader.GetString(2),
-                                Password = reader.GetString(3),
-                                ConfirmPassword = reader.GetString(4),
-                                Active = reader.GetBoolean(7),
-                                TimeStamp = reader.GetDateTime(8),
-                                ACCESS_LEVEL = Roles.USER.ToString(),
-                                WRITE_ACCESS = "WRITE_ACCESS"
                             };
                             UserList.Add(user);
                         }

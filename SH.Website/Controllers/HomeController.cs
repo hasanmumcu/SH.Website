@@ -9,6 +9,12 @@ using SH.Website.Services;
 using System.Security.Principal;
 using System.Data.SqlClient;
 using System.Collections.Generic;
+using SH.Website.Models.ViewModels;
+using System.Linq;
+using System;
+using System.Data;
+using SH.Website.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace SH.Website.Controllers
 {
@@ -18,14 +24,16 @@ namespace SH.Website.Controllers
         protected IFactory _factory;
         private readonly ILogger<HomeController> _logger;
         private readonly System.Collections.Generic.List<AdminContactModel> AdminContactList = new System.Collections.Generic.List<AdminContactModel>();
+        private readonly System.Collections.Generic.List<ProjectModel> ProjectList = new System.Collections.Generic.List<ProjectModel>();
+        protected IApplicationDbContext _context;
 
+        
 
-
-
-        public HomeController(ILogger<HomeController> logger, IFactory factory)
+        public HomeController(ILogger<HomeController> logger, IFactory factory, IApplicationDbContext context)
         {
             _logger = logger;
             _factory = factory;
+            _context = context;
         }
 
 
@@ -46,6 +54,17 @@ namespace SH.Website.Controllers
         {
             return View();
         }
+        public IActionResult ProjectAdd()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult ProjectEdit()
+        {
+            return View();
+        }
+
         public IActionResult LoginUser(User user)
         {
 

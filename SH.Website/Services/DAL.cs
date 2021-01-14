@@ -47,6 +47,12 @@ namespace SH.Website.Services
             await _context.SaveChangesAsync();
             return model;
         }
+        public async Task<ProjectModel> PostProject(ProjectModel model)
+        {
+            await _context.Projects.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model;
+        }
 
     }
 }

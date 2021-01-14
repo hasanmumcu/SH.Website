@@ -10,6 +10,7 @@ namespace SH.Website.Services
         Task<bool> PostLoginViewModel(LoginViewModel viewModel);
         Task<bool> PostRegisterViewModel(RegisterViewModel viewModel);
         Task<bool> PostAdminContactViewModel(AdminContactViewModel viewModel);
+        Task<bool> PostProjectViewModel(ProjectViewModel viewModel);
 
     }
 }

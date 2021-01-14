@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SH.Website.Migrations
 {
-    public partial class Inir : Migration
+    public partial class ıgdghghouhs : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -106,6 +106,26 @@ namespace SH.Website.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Logins", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Projects",
+                columns: table => new
+                {
+                    projectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    projectDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    status = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    clientCompany = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    projectLeader = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    estimatedBudget = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    totalAmountSpent = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    estimatedProjectDuration = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Active = table.Column<bool>(type: "bit", nullable: false),
+                    Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
                 });
 
             migrationBuilder.CreateTable(
@@ -330,6 +350,9 @@ namespace SH.Website.Migrations
 
             migrationBuilder.DropTable(
                 name: "Partials");
+
+            migrationBuilder.DropTable(
+                name: "Projects");
 
             migrationBuilder.DropTable(
                 name: "Registers");

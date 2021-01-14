@@ -10,8 +10,8 @@ using SH.Website.Data;
 namespace SH.Website.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210109004852_Inir")]
-    partial class Inir
+    [Migration("20210111030130_ıgdghghouhs")]
+    partial class ıgdghghouhs
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -347,6 +347,45 @@ namespace SH.Website.Migrations
                     b.HasIndex("IndexModelId");
 
                     b.ToTable("Partials");
+                });
+
+            modelBuilder.Entity("SH.Website.Models.ProjectModel", b =>
+                {
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("clientCompany")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("estimatedBudget")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("estimatedProjectDuration")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("projectDescription")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("projectLeader")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("projectName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("totalAmountSpent")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("SH.Website.Models.RegisterModel", b =>

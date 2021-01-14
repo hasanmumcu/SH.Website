@@ -108,5 +108,20 @@ namespace SH.Website.Services
             return false;
 
         }
+        public async Task<bool> PostProjectViewModel(ProjectViewModel viewModel)
+        {
+            try
+            {
+                if (await _dal.PostProject(_mapper.Map<ProjectModel>(viewModel)) != null)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
     }
 }
