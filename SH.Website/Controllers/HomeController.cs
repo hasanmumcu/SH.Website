@@ -26,14 +26,14 @@ namespace SH.Website.Controllers
         private readonly System.Collections.Generic.List<AdminContactModel> AdminContactList = new System.Collections.Generic.List<AdminContactModel>();
         private readonly System.Collections.Generic.List<ProjectModel> ProjectList = new System.Collections.Generic.List<ProjectModel>();
         protected IApplicationDbContext _context;
-
-        
-
-        public HomeController(ILogger<HomeController> logger, IFactory factory, IApplicationDbContext context)
+        private readonly IDAL _dal;
+        private readonly System.Collections.Generic.List<ProjectModel> EditSelectList = new System.Collections.Generic.List<ProjectModel>();
+        public HomeController(ILogger<HomeController> logger, IFactory factory, IApplicationDbContext context, IDAL dal)
         {
             _logger = logger;
             _factory = factory;
             _context = context;
+            _dal = dal;
         }
 
 
@@ -47,10 +47,19 @@ namespace SH.Website.Controllers
         //    return View();
         //}
         public IActionResult Login()
-        {
+        { 
             return View();
         }
         public IActionResult Dashboard()
+        {
+            return View();
+        }
+
+        public IActionResult Analyst()
+        {
+            return View();
+        }
+        public IActionResult Projects()
         {
             return View();
         }
@@ -58,12 +67,64 @@ namespace SH.Website.Controllers
         {
             return View();
         }
-
-        [HttpGet]
-        public IActionResult ProjectEdit()
+        public IActionResult Project()
         {
             return View();
         }
+
+        public IActionResult Edit_project()
+        {
+
+            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand command = new SqlCommand(
+                  "SELECT * FROM dbo.Projects;",
+                  connection);
+                connection.Open();
+
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+
+                        ProjectModel projectModel = new ProjectModel
+
+                        {
+
+                            projectName = reader.GetString(1),
+                            projectDescription = reader.GetString(2),
+                            status = reader.GetString(3),
+                            clientCompany = reader.GetString(4),
+                            projectLeader = reader.GetString(5),
+                            estimatedBudget = reader.GetString(6),
+                            totalAmountSpent = reader.GetString(7),
+                            estimatedProjectDuration = reader.GetString(8)
+
+
+                        };
+                        EditSelectList.Add(projectModel);
+                        //ViewData["Message"] = adminContactModel;
+                        ViewBag.Message = EditSelectList;
+
+
+                    }
+                    return View();
+                }
+                else
+                {
+                    //  
+                }
+                reader.Close();
+
+            }
+
+            return View();
+        }
+
+
 
         public IActionResult LoginUser(User user)
         {
@@ -100,6 +161,7 @@ namespace SH.Website.Controllers
         {
             return View();
         }
+
 
         public IActionResult MailBox()
         {

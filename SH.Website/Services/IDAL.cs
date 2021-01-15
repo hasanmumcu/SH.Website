@@ -11,5 +11,7 @@ namespace SH.Website.Services
         Task<RegisterModel> PostRegister(RegisterModel model);
         Task<AdminContactModel> PostAdminContact(AdminContactModel model);
         Task<ProjectModel> PostProject(ProjectModel model);
+        void UpdateProject(ProjectModel model);
+        public ProjectModel GetProjectData();
     }
 }

@@ -61,5 +61,11 @@ namespace SH.Website.Controllers
             return Json(new { result = "success" });
         }
 
+        public IActionResult Logoff()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
+
     }
 }

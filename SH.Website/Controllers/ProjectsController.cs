@@ -14,6 +14,7 @@ using SH.Website.Models.ViewModels;
 using SH.Website.Services;
 using System.Diagnostics;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace SH.Website.Controllers
 {
@@ -22,12 +23,13 @@ namespace SH.Website.Controllers
     {
         private readonly IApplicationDbContext _context;
         private readonly IFactory _factory;
-  
+        private readonly IDAL _dal;
 
-        public ProjectsController(IApplicationDbContext context, IFactory factory)
+        public ProjectsController(IApplicationDbContext context, IFactory factory, IDAL dal)
         {
             _context = context;
             _factory = factory;
+            _dal = dal;
         }
 
         //
@@ -51,84 +53,26 @@ namespace SH.Website.Controllers
             return RedirectToAction("Dashboard", "Home");
         }
 
-        /*[HttpPost]
+      
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit([Bind("projectName,projectDescription,status,clientCompany,projectLeader,estimatedBudget,totalAmountSpent,estimatedProjectDuration ")] ProjectViewModel viewModel)
+        public IActionResult Edit_project([Bind] ProjectModel project)
         {
+
             if (ModelState.IsValid)
             {
-                _context.Projects.FromSqlInterpolated($" exec dbo.spUpdateProjectByName ('{viewModel.projectName}', '{viewModel.projectDescription}', '{viewModel.status}','{viewModel.clientCompany}', '{ viewModel.projectLeader}',' {viewModel.estimatedBudget}', '{viewModel.totalAmountSpent}','{viewModel.estimatedProjectDuration}')");            
-                await _context.SaveChangesAsync();
+                _dal.UpdateProject(project);
                 return RedirectToAction("Dashboard", "Home");
             }
             return RedirectToAction("Dashboard", "Home");
-        }*/
-
-
-
-
-
-        public async Task<IActionResult> Edit(string? name)
-        {
-            if (name == null)
-            {
-                return NotFound();
-            }
-
-            var project = await _context.Projects
-                .AsNoTracking()
-                .FirstOrDefaultAsync(m => m.projectName == name);
-            if (project == null)
-            {
-                return NotFound();
-            }
-            PopulateProjectsDropDownList(project.projectName);
-            return View(project);
         }
 
-        private void PopulateProjectsDropDownList(object selectedProject = null)
-        {
-            var projectsQuery = from p in _context.Projects
-                                   orderby p.projectName
-                                   select p;
-            ViewBag.projectName = new SelectList(projectsQuery.AsNoTracking(), "projectName", "projectName", selectedProject);
-        }
-        public IActionResult Create()
-        {
-            PopulateProjectsDropDownList();
-            return View();
-        }
-        [HttpPost, ActionName("Edit")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPost(string? name)
-        {
-            if (name == null)
-            {
-                return NotFound();
-            }
 
-            var projectToUpdate = await _context.Projects
-                .FirstOrDefaultAsync(c => c.projectName == name);
-
-            if (await TryUpdateModelAsync<ProjectModel>(projectToUpdate,
-                "",
-                c => c.projectName, c => c.projectDescription, c => c.status, c => c.clientCompany, c => c.projectLeader, c => c.estimatedBudget, c => c.totalAmountSpent, c => c.estimatedProjectDuration))
-            {
-                try
-                {
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateException /* ex */)
-                {
-                    //Log the error (uncomment ex variable name and write a log.)
-                    ModelState.AddModelError("", "Unable to save changes. " +
-                        "Try again, and if the problem persists, " +
-                        "see your system administrator.");
-                }
-                return RedirectToAction("Dashboard", "Home");
-            }
-            PopulateProjectsDropDownList(projectToUpdate.projectName);
-            return RedirectToAction("Dashboard", "Home");
+        public IActionResult Logoff()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
 
     }

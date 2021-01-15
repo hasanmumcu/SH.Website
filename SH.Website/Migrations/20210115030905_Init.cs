@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SH.Website.Migrations
 {
-    public partial class ıgdghghouhs : Migration
+    public partial class Init : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -112,7 +112,8 @@ namespace SH.Website.Migrations
                 name: "Projects",
                 columns: table => new
                 {
-                    projectName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    projectName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     projectDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     status = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     clientCompany = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -120,12 +121,12 @@ namespace SH.Website.Migrations
                     estimatedBudget = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     totalAmountSpent = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     estimatedProjectDuration = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Active = table.Column<bool>(type: "bit", nullable: false),
                     Timestamp = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
+                    table.PrimaryKey("PK_Projects", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(

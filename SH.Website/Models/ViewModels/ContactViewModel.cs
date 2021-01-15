@@ -16,7 +16,7 @@ namespace SH.Website.Models.ViewModels
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
         [Required]
-        [StringLength(11)]
+        [StringLength(100)]
         public string Subject { get; set; }
         [Required]
         [StringLength(500)]

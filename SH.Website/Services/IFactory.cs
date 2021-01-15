@@ -12,5 +12,6 @@ namespace SH.Website.Services
         Task<bool> PostAdminContactViewModel(AdminContactViewModel viewModel);
         Task<bool> PostProjectViewModel(ProjectViewModel viewModel);
 
+
     }
 }

@@ -10,6 +10,7 @@ using System.Data.SqlClient;
 using SH.Website.Models;
 using System.Collections;
 
+
 namespace SH.Website.Authentication
 {
     public class TokenProvider
@@ -44,7 +45,7 @@ namespace SH.Website.Authentication
                     while (reader.Read())
                     {
 
-                        if (reader.GetString(5) == null && reader.GetString(6) == null)
+                        if (reader.IsDBNull(5) && reader.IsDBNull(6))
                         {
                             User user = new User
 
@@ -62,7 +63,7 @@ namespace SH.Website.Authentication
                             };
                             UserList.Add(user);
                         }
-                        else if (reader.GetString(5) != null && reader.GetString(6) != null)
+                        else if (!reader.IsDBNull(5))
                         {
                             User user = new User
 
@@ -98,7 +99,7 @@ namespace SH.Website.Authentication
                  new Claim(ClaimTypes.Name, user.Name),
                  new Claim("USERID", user.UserId.ToString()),
                  new Claim("EMAILID", user.Email),
-                 new Claim("PASSWORD", user.Password),
+                 new Claim("PASSWORD",  user.Password),
                  new Claim("ACCESS_LEVEL", user.ACCESS_LEVEL.ToUpper()),
                  new Claim("WRITE_ACCESS", user.WRITE_ACCESS.ToUpper())
             };
@@ -118,7 +119,7 @@ namespace SH.Website.Authentication
 
             //If it's registered user, check user password stored in Database 
             //For demo, password is not hashed. Simple string comparison 
-            //In real, password would be hashed and stored in DB. Before comparing, hash the password
+            //In real, password would be hashed and stored in DB. Before comparing, hash the passwordBC.HashPassword(model.Password);
             if (Password == user.Password)
             {
                 //Authentication successful, Issue Token with user credentials

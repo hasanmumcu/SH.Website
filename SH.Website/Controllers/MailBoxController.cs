@@ -70,5 +70,11 @@ namespace SH.Website.Controllers
             return View();
 
         }
+
+        public IActionResult Logoff()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
