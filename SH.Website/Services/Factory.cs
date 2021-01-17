@@ -123,9 +123,39 @@ namespace SH.Website.Services
             return false;
 
         }
+        public async Task<bool> PostAnalystContactViewModel(AnalystContactViewModel viewModel)
+        {
+            try
+            {
+                if (await _dal.PostAnalystContact(_mapper.Map<AnalystContactModel>(viewModel)) != null)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
+        public async Task<bool> PostUserContactViewModel(UserContactViewModel viewModel)
+        {
+            try
+            {
+                if (await _dal.PostUserContact(_mapper.Map<UserContactModel>(viewModel)) != null)
+                {
+                    return true;
+                }
+            }
+            catch
+            {
+            }
+            return false;
+
+        }
 
 
 
-       
+
     }
 }

@@ -15,7 +15,6 @@ namespace SH.Website.Migrations
                                    @estimatedBudget VARCHAR(200),      
                                    @totalAmountSpent	 VARCHAR(200), 
                                    @estimatedProjectDuration  VARCHAR(200)
-
                                 )        
                                 As        
                                 begin        
@@ -27,7 +26,6 @@ namespace SH.Website.Migrations
                                    estimatedBudget=@estimatedBudget,      
                                    totalAmountSpent=@totalAmountSpent,   
                                    estimatedProjectDuration=@estimatedProjectDuration   
-
       
                                 End ";
 

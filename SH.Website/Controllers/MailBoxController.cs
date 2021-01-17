@@ -47,9 +47,8 @@ namespace SH.Website.Controllers
                             to = reader.GetString(1),
                             Subject = reader.GetString(2),
                             Message = reader.GetString(3),
-                            Attachment = reader.GetString(4),
-                            Active = reader.GetBoolean(5),
-                            Timestamp = reader.GetDateTime(6)
+                            Active = reader.GetBoolean(4),
+                            Timestamp = reader.GetDateTime(5)
 
 
                         };
@@ -76,5 +75,10 @@ namespace SH.Website.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Home");
         }
+
+
+
+
+
     }
 }

@@ -21,6 +21,8 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.FileProviders;
+using System.IO;
 
 namespace SH.Website
 {
@@ -45,6 +47,7 @@ namespace SH.Website
                 options.IdleTimeout = TimeSpan.FromMinutes(60);
             });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
 
             //Provide a secret key to Encrypt and Decrypt the Token
             var SecretKey = Encoding.ASCII.GetBytes
@@ -94,35 +97,12 @@ namespace SH.Website
 
             IMapper mapper = mapperConfig.CreateMapper();
             services.AddSingleton(mapper);
+            services.AddSingleton<IFileProvider>(new PhysicalFileProvider(
+        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
             services.AddMvc();
 
-            //var mapper = new MapperConfiguration(c =>
-            //{
-                
-            //    c.CreateMap<ContactModel, ContactViewModel>().ReverseMap();
-            //    c.CreateMap<RegisterModel, RegisterViewModel>().ReverseMap();
-              
-            //}).CreateMapper();
-            //services.AddSingleton(mapper);
-            
-
-            //var mappe = new MapperConfiguration(c =>
-            //{
-            //    c.CreateMap<LoginModel, LoginViewModel>().ReverseMap();
-            //}).CreateMapper();
-            //services.AddSingleton(mappe);
-
-            //var mapp = new MapperConfiguration(c =>
-            //{
-            //    c.CreateMap<RegisterModel, RegisterViewModel>().ReverseMap();
-            //}).CreateMapper();
-            //services.AddSingleton(mapp);
-
-
-
-            //var dataCache = new DataCache(new Factory(new DAL(new ApplicationDbContext(new DbContextOptions<ApplicationDbContext>()))));
-            //services.AddSingleton<IDataCache>(dataCache);
+           
 
         }
 

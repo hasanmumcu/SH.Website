@@ -10,8 +10,8 @@ using SH.Website.Data;
 namespace SH.Website.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210115031613_Initial")]
-    partial class Initial
+    [Migration("20210117035424_sp_GetAllRegisters")]
+    partial class sp_GetAllRegisters
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -226,9 +226,6 @@ namespace SH.Website.Migrations
                     b.Property<bool>("Active")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Attachment")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Message")
                         .HasColumnType("nvarchar(max)");
 
@@ -244,6 +241,32 @@ namespace SH.Website.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AdminContacts");
+                });
+
+            modelBuilder.Entity("SH.Website.Models.AnalystContactModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("to")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AnalystContacts");
                 });
 
             modelBuilder.Entity("SH.Website.Models.ContactModel", b =>
@@ -423,6 +446,32 @@ namespace SH.Website.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Registers");
+                });
+
+            modelBuilder.Entity("SH.Website.Models.UserContactModel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<bool>("Active")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Message")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Timestamp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("to")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserContacts");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

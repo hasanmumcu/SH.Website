@@ -4,12 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using SH.Website.Models;
 using System.Data.SqlClient;
 using System.Data;
+using System;
+using System.Collections.Generic;
 
 namespace SH.Website.Services
 {
     public class DAL : IDAL
     {
         protected IApplicationDbContext _context;
+        private readonly System.Collections.Generic.List<string> allProjects = new System.Collections.Generic.List<string>();
         public DAL(IApplicationDbContext context)
         {
             _context = context;
@@ -71,8 +74,33 @@ namespace SH.Website.Services
             }
         }
 
-  
-        public  ProjectModel GetProjectData()
+        public void Initial(RegisterModel model)
+        {
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand cmd = new SqlCommand("sp_addInitialData", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Id", model.Id);
+                cmd.Parameters.AddWithValue("@Name", model.Name);
+                cmd.Parameters.AddWithValue("@Email", model.Email);
+                cmd.Parameters.AddWithValue("@Password", model.Password);
+                cmd.Parameters.AddWithValue("@ConfirmPassword", model.ConfirmPassword);
+                cmd.Parameters.AddWithValue("@ACCESS_LEVEL", model.ACCESS_LEVEL);
+                cmd.Parameters.AddWithValue("@WRITE_ACCESS", model.WRITE_ACCESS);
+                cmd.Parameters.AddWithValue("@Active", model.Active);
+                cmd.Parameters.AddWithValue("@Timestamp", model.Timestamp);
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+        }
+
+
+
+        public ProjectModel GetProjectData()
         {
             ProjectModel project  = new ProjectModel();
 
@@ -97,6 +125,46 @@ namespace SH.Website.Services
                 }
             }
             return project;
+        }
+        public List<string>  GetRegistersData()
+        {
+            RegisterModel register = new RegisterModel();
+
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+
+                SqlCommand cmd = new SqlCommand("sp_GetAllRegisters", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+
+                while (sdr.Read())
+                {
+
+                    register.Name = sdr["Name"].ToString();
+                    register.Email = sdr["Email"].ToString();
+                    register.Password = sdr["Password"].ToString();
+                    register.ConfirmPassword = sdr["ConfirmPassword"].ToString();
+                    register.ACCESS_LEVEL = sdr["ACCESS_LEVEL"].ToString();
+                    register.WRITE_ACCESS = sdr["WRITE_ACCESS"].ToString();
+                    allProjects.Add(register.Email);
+                }
+            }
+            return allProjects;
+        }
+
+        public async Task<AnalystContactModel> PostAnalystContact(AnalystContactModel model)
+        {
+            await _context.AnalystContacts.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model;
+        }
+
+        public async Task<UserContactModel> PostUserContact(UserContactModel model)
+        {
+            await _context.UserContacts.AddAsync(model);
+            await _context.SaveChangesAsync();
+            return model;
         }
     }
 }

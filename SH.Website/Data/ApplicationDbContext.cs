@@ -29,6 +29,8 @@ namespace SH.Website.Data
         
         public Microsoft.EntityFrameworkCore.DbSet<AdminContactModel> AdminContacts { get; set; }
         public Microsoft.EntityFrameworkCore.DbSet<ProjectModel> Projects { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<AnalystContactModel> AnalystContacts { get; set; }
+        public Microsoft.EntityFrameworkCore.DbSet<UserContactModel> UserContacts { get; set; }
 
 
 

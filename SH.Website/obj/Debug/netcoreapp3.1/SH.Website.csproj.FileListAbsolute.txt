@@ -24,6 +24,14 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Micros
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.AI.PerfCounterCollector.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.AI.WindowsServer.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\System.Web.Razor.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.Web.Helpers.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\System.Web.Helpers.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\System.Web.WebPages.Deployment.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\System.Web.WebPages.Razor.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\System.Web.WebPages.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\WebMatrix.Data.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\WebMatrix.WebData.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
@@ -97,6 +105,7 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Micros
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Templating.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGeneration.Utils.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Microsoft.Web.Infrastructure.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\NetTopologySuite.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\NetTopologySuite.IO.SqlServerBytes.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
@@ -222,6 +231,10 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Web
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Website.TagHelpers.output.cache
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Website.RazorCoreGenerate.cache
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Analyst.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\AnalystCompose.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\AnalystMailBox.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\AnalystReadMail.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Compose.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Dashboard.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Edit_project.cshtml.g.cs
@@ -230,9 +243,13 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\MailBox.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\ProjectAdd.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Projects.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\ReadMail.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Register.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\User.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserCompose.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserMailBox.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\UserReadMail.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\View.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\_About.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Banner.cshtml.g.cs
@@ -247,7 +264,6 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Pricing.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\_Work.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Login\LoginIndex.cshtml.g.cs
-C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ComposeFooter.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ComposeScriptsTemplate.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_DashboardFooter.cshtml.g.cs
@@ -260,6 +276,7 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutMailBox.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutProjectAdd.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutProjectEdit.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutProjects.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutReadMail.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutRegister.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutUser.cshtml.g.cs
@@ -270,6 +287,8 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectAddScriptsTemplate.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectEditFooter.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectEditScriptsTemplate.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectsFooter.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectsScriptsTemplate.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ReadMailFooter.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ReadMailScriptsTemplate.cshtml.g.cs
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ScriptsTemplate.cshtml.g.cs
@@ -285,8 +304,8 @@ C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Web
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Website.dll
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Website.pdb
 C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\SH.Website.genruntimeconfig.cache
-C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Analyst.cshtml.g.cs
-C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Projects.cshtml.g.cs
-C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutProjects.cshtml.g.cs
-C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectsFooter.cshtml.g.cs
-C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ProjectsScriptsTemplate.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\Error.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ErrorFooter.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutError.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ErrorScriptsTemplate.cshtml.g.cs
+C:\Users\Hasan\source\repos\SH.Website\SH.Website\obj\Debug\netcoreapp3.1\Razor\Views\Home\ErrorToProjects.cshtml.g.cs
