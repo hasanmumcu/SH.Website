@@ -13,6 +13,7 @@ namespace SH.Website.Services
     {
         protected IApplicationDbContext _context;
         private readonly System.Collections.Generic.List<string> allProjects = new System.Collections.Generic.List<string>();
+        private readonly System.Collections.Generic.List<AnalystContactModel> adminContacts = new System.Collections.Generic.List<AnalystContactModel>();
         public DAL(IApplicationDbContext context)
         {
             _context = context;
@@ -97,9 +98,77 @@ namespace SH.Website.Services
 
             }
         }
+        public AnalystContactModel AdminMailBox(AnalystContactModel model)
+        {
+            DateTime d;
+            AnalystContactModel analystContactModel = new AnalystContactModel();
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand cmd = new SqlCommand("sp_GetAllRowsOfViewAdminMailBox", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    analystContactModel.to = sdr["to"].ToString();
+                    analystContactModel.Subject = sdr["Subject"].ToString();
+                    analystContactModel.Message = sdr["Message"].ToString();
+                    analystContactModel.Timestamp = Convert.ToDateTime(sdr["Timestamp"]);
 
 
+                }
 
+            }
+            return analystContactModel;
+        }
+
+        public AdminContactModel AnalystMailBox(AdminContactModel model)
+        {
+            
+            AdminContactModel adminContactModel = new AdminContactModel();
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand cmd = new SqlCommand("sp_GetAllRowsOfViewAnalystMailBox", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    adminContactModel.to = sdr["to"].ToString();
+                    adminContactModel.Subject = sdr["Subject"].ToString();
+                    adminContactModel.Message = sdr["Message"].ToString();
+                    adminContactModel.Timestamp = Convert.ToDateTime(sdr["Timestamp"]);
+
+
+                }
+
+            }
+            return adminContactModel;
+        }
+
+        public AnalystContactModel UserMailBox(AnalystContactModel model)
+        {
+
+            AnalystContactModel analystContactModel = new AnalystContactModel();
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+                SqlCommand cmd = new SqlCommand("sp_GetAllRowsOfViewUserMailBox", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+                con.Open();
+                SqlDataReader sdr = cmd.ExecuteReader();
+                while (sdr.Read())
+                {
+                    analystContactModel.to = sdr["to"].ToString();
+                    analystContactModel.Subject = sdr["Subject"].ToString();
+                    analystContactModel.Message = sdr["Message"].ToString();
+                    analystContactModel.Timestamp = Convert.ToDateTime(sdr["Timestamp"]);
+
+
+                }
+
+            }
+            return analystContactModel;
+        }
         public ProjectModel GetProjectData()
         {
             ProjectModel project  = new ProjectModel();

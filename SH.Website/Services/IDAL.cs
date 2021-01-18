@@ -17,7 +17,9 @@ namespace SH.Website.Services
         void UpdateProject(ProjectModel model);
         public ProjectModel GetProjectData();
         public void Initial(RegisterModel model);
-
+        public AnalystContactModel AdminMailBox(AnalystContactModel model);
+        public AdminContactModel AnalystMailBox(AdminContactModel model);
         public List<string> GetRegistersData();
+        public AnalystContactModel UserMailBox(AnalystContactModel model);
     }
 }

@@ -25,7 +25,7 @@ namespace SH.Website.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly System.Collections.Generic.List<AdminContactModel> AdminContactList = new System.Collections.Generic.List<AdminContactModel>();
         private readonly System.Collections.Generic.List<AnalystContactModel> AnalystContactList = new System.Collections.Generic.List<AnalystContactModel>();
-        private readonly System.Collections.Generic.List<UserContactModel> UserContactList = new System.Collections.Generic.List<UserContactModel>();
+        private readonly System.Collections.Generic.List<AnalystContactModel> UserContactList = new System.Collections.Generic.List<AnalystContactModel>();
         private readonly System.Collections.Generic.List<ProjectModel> ProjectList = new System.Collections.Generic.List<ProjectModel>();
         private readonly System.Collections.Generic.List<string> allProjects = new System.Collections.Generic.List<string>();
         protected IApplicationDbContext _context;
@@ -291,49 +291,12 @@ namespace SH.Website.Controllers
         public IActionResult MailBox()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.AnalystContacts;",
-                  connection);
-                connection.Open();
-                
+            AnalystContactModel analystContactModel = new AnalystContactModel();
 
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        AnalystContactModel analystContactModel = new AnalystContactModel
-
-                        {
-
-                            Id = reader.GetGuid(0),
-                            to = reader.GetString(1),
-                            Subject = reader.GetString(2),
-                            Message = reader.GetString(3),
-                            Active = reader.GetBoolean(4),
-                            Timestamp = reader.GetDateTime(5)
-
-
-                        };
-                        AnalystContactList.Add(analystContactModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AnalystContactList;
-
-                        
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+              AnalystContactList.Add(
+            _dal.AdminMailBox(analystContactModel));
+                   //ViewData["Message"] = adminContactModel;
+             ViewBag.Message = AnalystContactList;
 
             return View();
 
@@ -341,49 +304,12 @@ namespace SH.Website.Controllers
         public IActionResult AnalystMailBox()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.AdminContacts;",
-                  connection);
-                connection.Open();
+            AdminContactModel adminContactModel = new AdminContactModel();
 
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        AdminContactModel adminContactModel = new AdminContactModel
-
-                        {
-
-                            Id = reader.GetGuid(0),
-                            to = reader.GetString(1),
-                            Subject = reader.GetString(2),
-                            Message = reader.GetString(3),
-                            Active = reader.GetBoolean(4),
-                            Timestamp = reader.GetDateTime(5)
-
-
-                        };
-                        AdminContactList.Add(adminContactModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AdminContactList;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            AdminContactList.Add(
+          _dal.AnalystMailBox(adminContactModel));
+            //ViewData["Message"] = adminContactModel;
+            ViewBag.Message = AdminContactList;
 
             return View();
 
@@ -391,49 +317,12 @@ namespace SH.Website.Controllers
         public IActionResult UserMailBox()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.AnalystContacts;",
-                  connection);
-                connection.Open();
+            AnalystContactModel analystContactModel = new AnalystContactModel();
 
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                         AnalystContactModel analystContactModel = new AnalystContactModel
-
-                         {
-
-                            Id = reader.GetGuid(0),
-                            to = reader.GetString(1),
-                            Subject = reader.GetString(2),
-                            Message = reader.GetString(3),
-                            Active = reader.GetBoolean(4),
-                            Timestamp = reader.GetDateTime(5)
-
-
-                        };
-                        AnalystContactList.Add(analystContactModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AnalystContactList;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            UserContactList.Add(
+          _dal.UserMailBox(analystContactModel));
+            //ViewData["Message"] = adminContactModel;
+            ViewBag.Message = UserContactList;
 
             return View();
 
