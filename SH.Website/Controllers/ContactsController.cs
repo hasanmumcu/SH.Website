@@ -23,6 +23,7 @@ namespace SH.Website.Controllers
         public ContactsController(IApplicationDbContext context, IFactory factory)
         {
             _factory = factory;
+            _context = context;
         }
 
         //

@@ -14,6 +14,9 @@ namespace SH.Website.Services
         protected IApplicationDbContext _context;
         private readonly System.Collections.Generic.List<string> allProjects = new System.Collections.Generic.List<string>();
         private readonly System.Collections.Generic.List<AnalystContactModel> adminContacts = new System.Collections.Generic.List<AnalystContactModel>();
+        private readonly System.Collections.Generic.List<AdminContactModel> anlaystContacts = new System.Collections.Generic.List<AdminContactModel>();
+        private readonly System.Collections.Generic.List<AnalystContactModel> adminContact = new System.Collections.Generic.List<AnalystContactModel>();
+        private readonly System.Collections.Generic.List<AnalystContactModel> userContact = new System.Collections.Generic.List<AnalystContactModel>();
         public DAL(IApplicationDbContext context)
         {
             _context = context;
@@ -98,10 +101,10 @@ namespace SH.Website.Services
 
             }
         }
-        public AnalystContactModel AdminMailBox(AnalystContactModel model)
+        public List<AnalystContactModel> AdminMailBox()
         {
             DateTime d;
-            AnalystContactModel analystContactModel = new AnalystContactModel();
+
             using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
             {
                 SqlCommand cmd = new SqlCommand("sp_GetAllRowsOfViewAdminMailBox", con);
@@ -110,22 +113,23 @@ namespace SH.Website.Services
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
+                    AnalystContactModel analystContactModel = new AnalystContactModel();
                     analystContactModel.to = sdr["to"].ToString();
                     analystContactModel.Subject = sdr["Subject"].ToString();
                     analystContactModel.Message = sdr["Message"].ToString();
                     analystContactModel.Timestamp = Convert.ToDateTime(sdr["Timestamp"]);
-
+                    adminContact.Add(analystContactModel);
 
                 }
 
             }
-            return analystContactModel;
+            return adminContact;
         }
 
-        public AdminContactModel AnalystMailBox(AdminContactModel model)
+        public List<AdminContactModel> AnalystMailBox()
         {
             
-            AdminContactModel adminContactModel = new AdminContactModel();
+     
             using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
             {
                 SqlCommand cmd = new SqlCommand("sp_GetAllRowsOfViewAnalystMailBox", con);
@@ -134,22 +138,22 @@ namespace SH.Website.Services
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
+                    AdminContactModel adminContactModel = new AdminContactModel();
                     adminContactModel.to = sdr["to"].ToString();
                     adminContactModel.Subject = sdr["Subject"].ToString();
                     adminContactModel.Message = sdr["Message"].ToString();
                     adminContactModel.Timestamp = Convert.ToDateTime(sdr["Timestamp"]);
 
-
+                    anlaystContacts.Add(adminContactModel);
                 }
 
             }
-            return adminContactModel;
+            return anlaystContacts;
         }
 
-        public AnalystContactModel UserMailBox(AnalystContactModel model)
+        public List<AnalystContactModel> UserMailBox()
         {
 
-            AnalystContactModel analystContactModel = new AnalystContactModel();
             using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
             {
                 SqlCommand cmd = new SqlCommand("sp_GetAllRowsOfViewUserMailBox", con);
@@ -158,16 +162,18 @@ namespace SH.Website.Services
                 SqlDataReader sdr = cmd.ExecuteReader();
                 while (sdr.Read())
                 {
+
+                    AnalystContactModel analystContactModel = new AnalystContactModel();
                     analystContactModel.to = sdr["to"].ToString();
                     analystContactModel.Subject = sdr["Subject"].ToString();
                     analystContactModel.Message = sdr["Message"].ToString();
                     analystContactModel.Timestamp = Convert.ToDateTime(sdr["Timestamp"]);
-
+                    userContact.Add(analystContactModel);
 
                 }
 
             }
-            return analystContactModel;
+            return userContact;
         }
         public ProjectModel GetProjectData()
         {

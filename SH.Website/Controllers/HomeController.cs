@@ -32,6 +32,7 @@ namespace SH.Website.Controllers
         private readonly IDAL _dal;
         private readonly System.Collections.Generic.List<ProjectModel> EditSelectList = new System.Collections.Generic.List<ProjectModel>();
         private readonly System.Collections.Generic.List<ProjectModel> AnalystPageProjects = new System.Collections.Generic.List<ProjectModel>();
+
         public HomeController(ILogger<HomeController> logger, IFactory factory, IApplicationDbContext context, IDAL dal)
         {
             _logger = logger;
@@ -291,12 +292,8 @@ namespace SH.Website.Controllers
         public IActionResult MailBox()
         {
 
-            AnalystContactModel analystContactModel = new AnalystContactModel();
 
-              AnalystContactList.Add(
-            _dal.AdminMailBox(analystContactModel));
-                   //ViewData["Message"] = adminContactModel;
-             ViewBag.Message = AnalystContactList;
+             ViewBag.Message = _dal.AdminMailBox();
 
             return View();
 
@@ -304,12 +301,8 @@ namespace SH.Website.Controllers
         public IActionResult AnalystMailBox()
         {
 
-            AdminContactModel adminContactModel = new AdminContactModel();
-
-            AdminContactList.Add(
-          _dal.AnalystMailBox(adminContactModel));
             //ViewData["Message"] = adminContactModel;
-            ViewBag.Message = AdminContactList;
+            ViewBag.Message = _dal.AnalystMailBox();
 
             return View();
 
@@ -317,12 +310,8 @@ namespace SH.Website.Controllers
         public IActionResult UserMailBox()
         {
 
-            AnalystContactModel analystContactModel = new AnalystContactModel();
 
-            UserContactList.Add(
-          _dal.UserMailBox(analystContactModel));
-            //ViewData["Message"] = adminContactModel;
-            ViewBag.Message = UserContactList;
+            ViewBag.Message = _dal.UserMailBox();
 
             return View();
 
