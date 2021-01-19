@@ -77,51 +77,7 @@ namespace SH.Website.Controllers
         }
         public IActionResult Projects()
         {
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.Projects;",
-                  connection);
-                connection.Open();
-
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        ProjectModel project = new ProjectModel
-
-                        {
-
-                            projectName = reader.GetString(1),
-                            projectDescription = reader.GetString(2),
-                            status = reader.GetString(3),
-                            clientCompany = reader.GetString(4),
-                            projectLeader = reader.GetString(5),
-                            estimatedBudget = reader.GetString(6),
-                            totalAmountSpent = reader.GetString(7),
-                            estimatedProjectDuration = reader.GetString(8)
-
-
-                        };
-                        AnalystPageProjects.Add(project);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AnalystPageProjects;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            ViewBag.Message = _dal.GetProjectData();
 
             return View();
         }
@@ -137,56 +93,21 @@ namespace SH.Website.Controllers
         public IActionResult Edit_project()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.Projects;",
-                  connection);
-                connection.Open();
-
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        ProjectModel projectModel = new ProjectModel
-
-                        {
-
-                            projectName = reader.GetString(1),
-                            projectDescription = reader.GetString(2),
-                            status = reader.GetString(3),
-                            clientCompany = reader.GetString(4),
-                            projectLeader = reader.GetString(5),
-                            estimatedBudget = reader.GetString(6),
-                            totalAmountSpent = reader.GetString(7),
-                            estimatedProjectDuration = reader.GetString(8)
-
-
-                        };
-                        EditSelectList.Add(projectModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = EditSelectList;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            ViewBag.Message = _dal.GetProjectData();
 
             return View();
         }
 
 
+
+
+        public IActionResult deleteFromAnalyst(string subject)
+        {
+
+            _dal.DeleteMessageFromAnalyst(subject);
+
+            return RedirectToAction("Analyst");
+        }
 
         public IActionResult LoginUser(User user)
         {
@@ -319,49 +240,7 @@ namespace SH.Website.Controllers
         public IActionResult ReadMail()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.AnalystContacts;",
-                  connection);
-                connection.Open();
-
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        AnalystContactModel analystContactModel = new AnalystContactModel
-
-                        {
-
-                            Id = reader.GetGuid(0),
-                            to = reader.GetString(1),
-                            Subject = reader.GetString(2),
-                            Message = reader.GetString(3),
-                            Active = reader.GetBoolean(4),
-                            Timestamp = reader.GetDateTime(5)
-
-
-                        };
-                        AnalystContactList.Add(analystContactModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AnalystContactList;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            ViewBag.Message = _dal.AdminMailBox();
 
             return View();
 
@@ -369,49 +248,8 @@ namespace SH.Website.Controllers
         public IActionResult AnalystReadMail()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.AdminContacts;",
-                  connection);
-                connection.Open();
-
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        AdminContactModel adminContactModel = new AdminContactModel
-
-                        {
-
-                            Id = reader.GetGuid(0),
-                            to = reader.GetString(1),
-                            Subject = reader.GetString(2),
-                            Message = reader.GetString(3),
-                            Active = reader.GetBoolean(4),
-                            Timestamp = reader.GetDateTime(5)
-
-
-                        };
-                        AdminContactList.Add(adminContactModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AdminContactList;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            //ViewData["Message"] = adminContactModel;
+            ViewBag.Message = _dal.AnalystMailBox();
 
             return View();
 
@@ -420,49 +258,7 @@ namespace SH.Website.Controllers
         public IActionResult UserReadMail()
         {
 
-            using (var connection = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
-            {
-                SqlCommand command = new SqlCommand(
-                  "SELECT * FROM dbo.AnalystContacts;",
-                  connection);
-                connection.Open();
-
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-
-                        AnalystContactModel analystContactModel = new AnalystContactModel
-
-                        {
-
-                            Id = reader.GetGuid(0),
-                            to = reader.GetString(1),
-                            Subject = reader.GetString(2),
-                            Message = reader.GetString(3),
-                            Active = reader.GetBoolean(4),
-                            Timestamp = reader.GetDateTime(5)
-
-
-                        };
-                        AnalystContactList.Add(analystContactModel);
-                        //ViewData["Message"] = adminContactModel;
-                        ViewBag.Message = AnalystContactList;
-
-
-                    }
-                    return View();
-                }
-                else
-                {
-                    //  
-                }
-                reader.Close();
-
-            }
+            ViewBag.Message = _dal.UserMailBox();
 
             return View();
 

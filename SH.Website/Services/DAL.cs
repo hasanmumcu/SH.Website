@@ -6,6 +6,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System;
 using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
 
 namespace SH.Website.Services
 {
@@ -17,6 +18,7 @@ namespace SH.Website.Services
         private readonly System.Collections.Generic.List<AdminContactModel> anlaystContacts = new System.Collections.Generic.List<AdminContactModel>();
         private readonly System.Collections.Generic.List<AnalystContactModel> adminContact = new System.Collections.Generic.List<AnalystContactModel>();
         private readonly System.Collections.Generic.List<AnalystContactModel> userContact = new System.Collections.Generic.List<AnalystContactModel>();
+        private readonly System.Collections.Generic.List<ProjectModel> projects  = new System.Collections.Generic.List<ProjectModel>();
         public DAL(IApplicationDbContext context)
         {
             _context = context;
@@ -76,6 +78,25 @@ namespace SH.Website.Services
                 con.Close();
                 
             }
+        }
+
+        public void DeleteMessageFromAnalyst(string subject )
+        {
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+
+                SqlCommand cmd = new SqlCommand("sp_DeleteMessage", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Subject", subject);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+           
         }
 
         public void Initial(RegisterModel model)
@@ -175,9 +196,9 @@ namespace SH.Website.Services
             }
             return userContact;
         }
-        public ProjectModel GetProjectData()
+        public List<ProjectModel> GetProjectData()
         {
-            ProjectModel project  = new ProjectModel();
+
 
             using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
             {
@@ -189,6 +210,7 @@ namespace SH.Website.Services
 
                 while (sdr.Read())
                 {
+                    ProjectModel project = new ProjectModel();
                     project.projectName = sdr["projectName"].ToString();
                     project.projectDescription = sdr["projectDescription"].ToString();
                     project.status = sdr["status"].ToString();
@@ -197,9 +219,10 @@ namespace SH.Website.Services
                     project.estimatedBudget = sdr["estimatedBudget"].ToString();
                     project.totalAmountSpent = sdr["totalAmountSpent"].ToString();
                     project.estimatedProjectDuration = sdr["estimatedProjectDuration"].ToString();
+                    projects.Add(project);
                 }
             }
-            return project;
+            return projects;
         }
         public List<string>  GetRegistersData()
         {

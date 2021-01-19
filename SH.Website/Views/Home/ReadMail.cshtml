@@ -273,16 +273,16 @@
                                             <div class="card-footer bg-white">
                                                 <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
                                                     <li>
-                                                        <span class="mailbox-attachment-icon"><i class="far fa-file-pdf"></i></span>
+
                                                         @if (ModelFiles != null)
                                                         {
                                                             foreach (var f in ModelFiles)
                                                             {
-                                    <div class="col-lg-3">
-                                        <img src="~/img/@f.Name" style="width:90%;">
-                                        <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile","fileupload",new { fname=f.Name})">Delete</a></div>
-                                    </div>}
-                            }
+                                                    <div class="col-lg-3">
+                                                        <img src="~/img/@f.Name" style="width:90%;">
+                                                        <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile","fileupload",new { fname=f.Name})">Delete</a></div>
+                                                    </div>}
+                                            }
                                                         <div class="clearfix"></div>
 
                                                     </li>

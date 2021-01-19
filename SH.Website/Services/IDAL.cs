@@ -15,11 +15,12 @@ namespace SH.Website.Services
         Task<UserContactModel> PostUserContact(UserContactModel model);
         Task<ProjectModel> PostProject(ProjectModel model);
         void UpdateProject(ProjectModel model);
-        public ProjectModel GetProjectData();
+        public List<ProjectModel> GetProjectData();
         public void Initial(RegisterModel model);
         public List<AnalystContactModel> AdminMailBox();
         public List<AdminContactModel> AnalystMailBox();
         public List<string> GetRegistersData();
         public List<AnalystContactModel> UserMailBox();
+        public void DeleteMessageFromAnalyst(string subject);
     }
 }
