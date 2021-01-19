@@ -109,13 +109,9 @@ You can add this code above user-panel or nav-sidebar:
 ```html
 <form class="form-inline">
   <div class="input-group">
-    <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-    <div class="input-group-append">
-      <button class="btn btn-sidebar" type="submit">
-        <i class="fas fa-search"></i>
-      </button>
-    </div>
-  </div>
+
+
+
 </form>
 ```
 {: .max-height-300}
