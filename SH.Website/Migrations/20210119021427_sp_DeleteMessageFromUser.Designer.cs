@@ -10,8 +10,8 @@ using SH.Website.Data;
 namespace SH.Website.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210118075950_sp_DeleteMessageFromAdmin")]
-    partial class sp_DeleteMessageFromAdmin
+    [Migration("20210119021427_sp_DeleteMessageFromUser")]
+    partial class sp_DeleteMessageFromUser
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

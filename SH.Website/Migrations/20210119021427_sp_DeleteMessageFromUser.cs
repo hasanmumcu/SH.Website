@@ -12,7 +12,7 @@ namespace SH.Website.Migrations
                                 )        
                                 As         
                                 begin        
-                                   DELETE FROM dbo.UserContacts WHERE Subject= @Subject;        
+                                   DELETE FROM dbo.AnalystContacts WHERE Subject= @Subject;        
                                 End ";
 
             migrationBuilder.Sql(procedure);

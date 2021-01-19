@@ -109,6 +109,22 @@ namespace SH.Website.Controllers
             return RedirectToAction("Analyst");
         }
 
+        public IActionResult deleteFromAdmin(string subject)
+        {
+
+            _dal.DeleteMessageFromAdmin(subject);
+
+            return RedirectToAction("Dashboard");
+
+        }
+
+        public IActionResult deleteFromUser(string subject)
+        {
+
+            _dal.DeleteMessageFromUser(subject);
+
+            return RedirectToAction("User");
+        }
         public IActionResult LoginUser(User user)
         {
 

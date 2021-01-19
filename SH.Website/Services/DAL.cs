@@ -98,6 +98,42 @@ namespace SH.Website.Services
             }
            
         }
+        public void DeleteMessageFromAdmin(string subject)
+        {
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+
+                SqlCommand cmd = new SqlCommand("sp_DeleteMessageFromAdmin", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Subject", subject);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+
+        }
+        public void DeleteMessageFromUser(string subject)
+        {
+            using (SqlConnection con = new SqlConnection("Server=DESKTOP-7KC40QR\\SQLEXPRESS;Database=SH.WebAPP;Integrated Security=True;MultipleActiveResultSets=true"))
+            {
+
+                SqlCommand cmd = new SqlCommand("sp_DeleteMessageFromUser", con);
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@Subject", subject);
+
+
+                con.Open();
+                cmd.ExecuteNonQuery();
+                con.Close();
+
+            }
+
+        }
 
         public void Initial(RegisterModel model)
         {

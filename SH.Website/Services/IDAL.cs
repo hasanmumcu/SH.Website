@@ -22,5 +22,7 @@ namespace SH.Website.Services
         public List<string> GetRegistersData();
         public List<AnalystContactModel> UserMailBox();
         public void DeleteMessageFromAnalyst(string subject);
+        public void DeleteMessageFromUser(string subject);
+        public void DeleteMessageFromAdmin(string subject);
     }
 }
