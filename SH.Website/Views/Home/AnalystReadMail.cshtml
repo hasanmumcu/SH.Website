@@ -8,6 +8,8 @@
     var ModelFiles = ViewBag.ModelFiles;}
 
 @{ Layout = "~/Views/Shared/_LayoutReadMail.cshtml"; }
+@if (User.HasClaim("ACCESS_LEVEL", "ANALYST"))
+{
 <div class="wrapper">
     <!-- Navbar -->
     <!-- Navbar -->
@@ -145,7 +147,7 @@
                             <div class="card-body p-0">
                                 <ul class="nav nav-pills flex-column">
                                     <li class="nav-item active">
-                                         <a asp-area="" asp-controller="Home" asp-action="AnalystMailBox"  class="nav-link">
+                                        <a asp-area="" asp-controller="Home" asp-action="AnalystMailBox" class="nav-link">
                                             <i class="fas fa-inbox"></i> Inbox
                                             <span class="badge bg-primary float-right"></span>
                                         </a>
@@ -156,7 +158,6 @@
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
-                        
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
@@ -181,8 +182,8 @@
                             else
                             {
 
-                @foreach (var p in messageList)
-                {
+            @foreach (var p in messageList)
+            {
 <div class="card-body p-0">
     <div class="mailbox-read-info">
         <h5>@p.Subject</h5>
@@ -197,7 +198,7 @@
             @using (Html.BeginForm("deleteFromAnalyst", "Home", new { subject = @p.Subject }))
             {
 
-    <a asp-action="deleteFromAnalyst" asp-controller="Home"><input class="button" id="submit" type="submit" value="Delete" /></a>}
+<a asp-action="deleteFromAnalyst" asp-controller="Home"><input class="button" id="submit" type="submit" value="Delete" /></a>}
 
 
             <button type="button" class="btn btn-default btn-sm" data-container="body" title="Reply">
@@ -220,34 +221,34 @@
     </div>
     <!-- /.mailbox-read-message -->
 </div> <!-- /.card-body -->
-                    <div class="card-footer bg-white">
-                        <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
-                            <li>
+                        <div class="card-footer bg-white">
+                            <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
+                                <li>
 
-                                @if (ModelFiles != null)
-                                {
-                                    foreach (var f in ModelFiles)
+                                    @if (ModelFiles != null)
                                     {
+                                        foreach (var f in ModelFiles)
+                                        {
             <div class="col-lg-3">
                 <img src="~/img/@f.Name" style="width:90%;">
-                <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile","fileupload",new { fname=f.Name})">Delete</a></div>
+                <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile", "fileupload", new { fname = f.Name })">Delete</a></div>
             </div>}
     }
-                                <div class="clearfix"></div>
-                            </li>
+                                    <div class="clearfix"></div>
+                                </li>
 
-                        </ul>
-                    </div> <!-- /.card-footer -->
-                        <div class="card-footer">
-                            <div class="float-right">
-                                <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
-                                <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
-                            </div>
+                            </ul>
+                        </div> <!-- /.card-footer -->
+                                                <div class="card-footer">
+                                                    <div class="float-right">
+                                                        <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
+                                                        <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
+                                                    </div>
 
 
 
-                            <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
-                        </div>}} <!-- /.card-footer -->
+                                                    <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
+                                                </div>}} <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -260,6 +261,4 @@
     </div>
     <!-- /.content-wrapper -->
 
-</div>
-
-
+</div>}

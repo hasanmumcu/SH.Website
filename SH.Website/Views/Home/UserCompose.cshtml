@@ -1,7 +1,8 @@
 ﻿@model SH.Website.Models.ViewModels.UserContactViewModel
 
 @{ Layout = "~/Views/Shared/_LayoutCompose.cshtml"; }
-
+@if (User.HasClaim("ACCESS_LEVEL", "USER"))
+{
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
@@ -25,10 +26,6 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user (optional) -->
-
-
-
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -113,7 +110,7 @@
                             <div class="card-body p-0">
                                 <ul class="nav nav-pills flex-column">
                                     <li class="nav-item active">
-                                         <a asp-area="" asp-controller="Home" asp-action="UserMailBox" class="nav-link">
+                                        <a asp-area="" asp-controller="Home" asp-action="UserMailBox" class="nav-link">
                                             <i class="fas fa-inbox"></i> Inbox
                                             <span class="badge bg-primary float-right"></span>
                                         </a>
@@ -124,7 +121,7 @@
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
-                       
+
                     </div>
                     <!-- /.col -->
                     <div class="col-md-9">
@@ -149,12 +146,12 @@
                                         <input asp-for="Message" class="form-control" placeholder="Message:" />
 
                                     </div>
-                                   
+
                                 </div>
                                 <!-- /.card-body -->
                                 <div class="card-footer">
                                     <div class="float-right">
-    
+
                                         <button type="submit" class="btn btn-primary"><i class="far fa-envelope"></i> Send</button>
                                     </div>
 
@@ -174,5 +171,4 @@
     <!-- /.content-wrapper -->
     <!-- Control Sidebar -->
 
-</div>
-<!-- ./wrapper -->
+</div> <!-- ./wrapper -->}

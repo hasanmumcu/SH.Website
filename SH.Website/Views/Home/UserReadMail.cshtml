@@ -8,6 +8,8 @@
     var ModelFiles = ViewBag.ModelFiles;}
 
 @{ Layout = "~/Views/Shared/_LayoutReadMail.cshtml"; }
+@if (User.HasClaim("ACCESS_LEVEL", "USER"))
+{
 <div class="wrapper">
     <!-- Navbar -->
     <!-- Navbar -->
@@ -32,9 +34,6 @@
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user (optional) -->
-
-
-
             <!-- Sidebar Menu -->
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -129,7 +128,7 @@
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
-                       
+
                     </div>
                     <!-- /.col -->
                     <div class="col-md-9">
@@ -154,70 +153,70 @@
                             else
                             {
 
-                        @foreach (var p in messageList)
-                        {
-                        <div class="card-body p-0">
-                            <div class="mailbox-read-info">
-                                <h5>@p.Subject</h5>
-                                <h6>
-                                    To: @p.to
-                                    <span class="mailbox-read-time float-right">@p.Timestamp</span>
-                                </h6>
-                            </div>
-                            <!-- /.mailbox-read-info -->
-                            <div class="mailbox-controls with-border text-center">
-                                <div class="btn-group">
-                                    @using (Html.BeginForm("deleteFromUser", "Home", new { subject = @p.Subject }))
+            @foreach (var p in messageList)
+            {
+<div class="card-body p-0">
+    <div class="mailbox-read-info">
+        <h5>@p.Subject</h5>
+        <h6>
+            To: @p.to
+            <span class="mailbox-read-time float-right">@p.Timestamp</span>
+        </h6>
+    </div>
+    <!-- /.mailbox-read-info -->
+    <div class="mailbox-controls with-border text-center">
+        <div class="btn-group">
+            @using (Html.BeginForm("deleteFromUser", "Home", new { subject = @p.Subject }))
+            {
+
+<a asp-action="deleteFromUser" asp-controller="Home"><input class="button" id="submit" type="submit" value="Delete" /></a>}
+            <i class="far fa-trash-alt"></i>
+
+            <button type="button" class="btn btn-default btn-sm" data-container="body" title="Reply">
+                <i class="fas fa-reply"></i>
+            </button>
+            <button type="button" class="btn btn-default btn-sm" data-container="body" title="Forward">
+                <i class="fas fa-share"></i>
+            </button>
+        </div>
+        <!-- /.btn-group -->
+        <button type="button" class="btn btn-default btn-sm" title="Print">
+            <i class="fas fa-print"></i>
+        </button>
+    </div>
+    <!-- /.mailbox-controls -->
+    <div class="mailbox-read-message">
+        <p>@p.Message</p>
+
+
+    </div>
+    <!-- /.mailbox-read-message -->
+</div> <!-- /.card-body -->
+                        <div class="card-footer bg-white">
+                            <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
+                                <li>
+
+                                    @if (ModelFiles != null)
                                     {
+                                        foreach (var f in ModelFiles)
+                                        {
+            <div class="col-lg-3">
+                <img src="~/img/@f.Name" style="width:90%;">
+                <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile", "fileupload", new { fname = f.Name })">Delete</a></div>
+            </div>}
+    }
+                                    <div class="clearfix"></div>
+                                </li>
 
-                                <a asp-action="deleteFromUser" asp-controller="Home"><input class="button" id="submit" type="submit" value="Delete" /></a>}
-                                    <i class="far fa-trash-alt"></i>
-                          
-                                                        <button type="button" class="btn btn-default btn-sm" data-container="body" title="Reply">
-                                                            <i class="fas fa-reply"></i>
-                                                        </button>
-                                                                            <button type="button" class="btn btn-default btn-sm" data-container="body" title="Forward">
-                                                                                <i class="fas fa-share"></i>
-                                                                            </button>
-                                                                                            </div>
-                                <!-- /.btn-group -->
-                                <button type="button" class="btn btn-default btn-sm" title="Print">
-                                    <i class="fas fa-print"></i>
-                                </button>
-                            </div>
-                            <!-- /.mailbox-controls -->
-                            <div class="mailbox-read-message">
-                                <p>@p.Message</p>
+                            </ul>
+                        </div> <!-- /.card-footer -->
+                                                <div class="card-footer">
+                                                    <div class="float-right">
+
+                                                    </div>
 
 
-                            </div>
-                            <!-- /.mailbox-read-message -->
-                        </div> <!-- /.card-body -->
-                                            <div class="card-footer bg-white">
-                                                <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
-                                                    <li>
-                                                       
-                                                        @if (ModelFiles != null)
-                                                        {
-                                                            foreach (var f in ModelFiles)
-                                                            {
-                                    <div class="col-lg-3">
-                                        <img src="~/img/@f.Name" style="width:90%;">
-                                        <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile","fileupload",new { fname=f.Name})">Delete</a></div>
-                                    </div>}
-                            }
-                                                        <div class="clearfix"></div>
-                                                    </li>
-
-                                                </ul>
-                                            </div> <!-- /.card-footer -->
-                        <div class="card-footer">
-                            <div class="float-right">
-
-                            </div>
-
-
-                        </div>}} <!-- /.card-footer -->
+                                                </div>}} <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -230,6 +229,4 @@
     </div>
     <!-- /.content-wrapper -->
 
-</div>
-
-
+</div>}

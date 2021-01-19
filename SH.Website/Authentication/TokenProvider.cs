@@ -9,6 +9,7 @@ using System.Text;
 using System.Data.SqlClient;
 using SH.Website.Models;
 using System.Collections;
+using BC = BCrypt.Net.BCrypt;
 
 
 namespace SH.Website.Authentication
@@ -117,10 +118,8 @@ namespace SH.Website.Authentication
             if (user == null)
                 return null;
 
-            //If it's registered user, check user password stored in Database 
-            //For demo, password is not hashed. Simple string comparison 
-            //In real, password would be hashed and stored in DB. Before comparing, hash the passwordBC.HashPassword(model.Password);
-            if (Password == user.Password)
+
+            if (BC.Verify(Password, user.Password))
             {
                 //Authentication successful, Issue Token with user credentials
                 //Provide the security key which was given in the JWToken configuration in Startup.cs

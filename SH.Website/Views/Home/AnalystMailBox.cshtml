@@ -4,11 +4,10 @@
 @*@{ ViewBag.Title = "MailBox"; }
     @{ var data = (AdminContactModel)ViewData["Message"]; }*@
 @{ ViewBag.Title = "AnalystMailBox"; }
-@{
-    var messageList = ViewBag.Message;
-}
+@{ var messageList = ViewBag.Message; }
 @{ Layout = "~/Views/Shared/_LayoutMailBox.cshtml"; }
-
+@if (User.HasClaim("ACCESS_LEVEL", "ANALYST"))
+{
 
 <div class="wrapper">
     <!-- Navbar -->
@@ -36,7 +35,7 @@
             <!-- Sidebar user (optional) -->
             <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                 <div class="image">
-                    <img src="~/dashboard-template/dist/img/WhatsApp Image 2021-01-17 at 12.27.30.jpeg"  class="img-circle elevation-2" alt="User Image">
+                    <img src="~/dashboard-template/dist/img/WhatsApp Image 2021-01-17 at 12.27.30.jpeg" class="img-circle elevation-2" alt="User Image">
                 </div>
                 <div class="info">
                     <a href="#" class="d-block">Sibel Kara</a>
@@ -96,7 +95,7 @@
                                     <p>Projects</p>
                                 </a>
                             </li>
-           
+
 
                         </ul>
                     </li>
@@ -158,7 +157,7 @@
                         <!-- /.card-body -->
                     </div>
                     <!-- /.card -->
-                    
+
                 </div>
                 <!-- /.col -->
                 <div class="col-md-9">
@@ -189,24 +188,24 @@
                                         {
 
 
-                                    @foreach (var p in messageList)
-                                    {
-                                    <tr>
-                                        <td>
-                                            <div class="icheck-primary">
-                                                <input type="checkbox" value="" id="check@p">
-                                                <label for="check@p"></label>
-                                            </div>
-                                        </td>
-                                        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                        <td class="mailbox-name"><a asp-area="" asp-controller="Home" asp-action="AnalystReadMail">@p.to</a></td>
-                                        <td class="mailbox-subject">
-                                            <b>@p.Subject</b> - @p.Message
-                                        </td>
-                                        <td class="mailbox-attachment"></td>
-                                        <td class="mailbox-date">@p.Timestamp</td>
-                                    </tr>
-                                      }}
+                        @foreach (var p in messageList)
+                        {
+    <tr>
+        <td>
+            <div class="icheck-primary">
+                <input type="checkbox" value="" id="check@p">
+                <label for="check@p"></label>
+            </div>
+        </td>
+        <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
+        <td class="mailbox-name"><a asp-area="" asp-controller="Home" asp-action="AnalystReadMail">@p.to</a></td>
+        <td class="mailbox-subject">
+            <b>@p.Subject</b> - @p.Message
+        </td>
+        <td class="mailbox-attachment"></td>
+        <td class="mailbox-date">@p.Timestamp</td>
+    </tr>
+}}
                                     </tbody>
                                 </table>
                                 <!-- /.table -->
@@ -231,4 +230,4 @@
     </div>
     <!-- /.content-wrapper -->
 
-</div>
+</div>}

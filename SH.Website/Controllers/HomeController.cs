@@ -15,7 +15,7 @@ using System;
 using System.Data;
 using SH.Website.Data;
 using Microsoft.EntityFrameworkCore;
-
+using BC = BCrypt.Net.BCrypt;
 namespace SH.Website.Controllers
 {
     //[Authorize(Roles.DIRECTOR, Roles.USER, Roles.ANALYST)]
@@ -154,7 +154,7 @@ namespace SH.Website.Controllers
 
             registerModelToOwner.Id = Guid.Parse("cda8118c-fdd9-4ba9-938e-bff705c29980");
             registerModelToOwner.Name = "Hasan";
-            registerModelToOwner.Password = "hasanmumcu";
+            registerModelToOwner.Password = BC.HashPassword("hasanmumcu");
             registerModelToOwner.ACCESS_LEVEL = "DIRECTOR";
             registerModelToOwner.Active = true;
             registerModelToOwner.ConfirmPassword = "hasanmumcu";
@@ -180,7 +180,7 @@ namespace SH.Website.Controllers
             RegisterModel registerModelToAnalyst = new RegisterModel();
             registerModelToAnalyst.Id = Guid.Parse("ac56e595-0c00-4139-8f02-cc069726d5a1");
             registerModelToAnalyst.Name = "Sibel";
-            registerModelToAnalyst.Password = "sibelkara";
+            registerModelToAnalyst.Password = BC.HashPassword("sibelkara");
             registerModelToAnalyst.ACCESS_LEVEL = "ANALYST";
             registerModelToAnalyst.Active = true;
             registerModelToAnalyst.ConfirmPassword = "sibelkara";

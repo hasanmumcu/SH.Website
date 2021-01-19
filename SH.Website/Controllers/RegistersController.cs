@@ -11,7 +11,7 @@ using SH.Website.Data;
 using SH.Website.Models;
 using SH.Website.Models.ViewModels;
 using SH.Website.Services;
-
+using BC = BCrypt.Net.BCrypt;
 
 namespace SH.Website.Controllers
 {
@@ -34,7 +34,7 @@ namespace SH.Website.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                viewModel.Password = BC.HashPassword(viewModel.Password);
                 if (await _factory.PostRegisterViewModel(viewModel))
                 {
                     return RedirectToAction("Login", "Home");

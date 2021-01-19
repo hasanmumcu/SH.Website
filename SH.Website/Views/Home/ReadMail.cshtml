@@ -3,12 +3,13 @@
 
 @*@{ ViewBag.Title = "MailBox"; }
     @{ var data = (AdminContactModel)ViewData["Message"]; }*@
-@{ ViewBag.Title = "ReadMail"; 
-    }
+@{ ViewBag.Title = "ReadMail"; }
 @{ var messageList = ViewBag.Message;
-   var ModelFiles = ViewBag.ModelFiles;}
+    var ModelFiles = ViewBag.ModelFiles;}
 
 @{ Layout = "~/Views/Shared/_LayoutReadMail.cshtml"; }
+@if (User.HasClaim("ACCESS_LEVEL", "DIRECTOR"))
+{
 <div class="wrapper">
     <!-- Navbar -->
     <!-- Navbar -->
@@ -162,7 +163,7 @@
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
-                        
+
                     </div>
                     <!-- /.col -->
                     <div class="col-md-9">
@@ -188,71 +189,71 @@
                             }
                             else
                             {<!-- /.card-header -->
-                                        @foreach (var p in messageList)
-                                        {
-                        <div class="card-body p-0">
-                            <div class="mailbox-read-info">
-                                <h5>@p.Subject</h5>
-                                <h6>
-                                    To: @p.to
-                                    <span class="mailbox-read-time float-right">@p.Timestamp</span>
-                                </h6>
-                            </div>
-                            <!-- /.mailbox-read-info -->
-                            <div class="mailbox-controls with-border text-center">
-                                <div class="btn-group">
-                                    @using (Html.BeginForm("deleteFromAdmin", "Home", new { subject = @p.Subject }))
-                                    {
+                                                    @foreach (var p in messageList)
+                                                    {
+                                <div class="card-body p-0">
+                                    <div class="mailbox-read-info">
+                                        <h5>@p.Subject</h5>
+                                        <h6>
+                                            To: @p.to
+                                            <span class="mailbox-read-time float-right">@p.Timestamp</span>
+                                        </h6>
+                                    </div>
+                                    <!-- /.mailbox-read-info -->
+                                    <div class="mailbox-controls with-border text-center">
+                                        <div class="btn-group">
+                                            @using (Html.BeginForm("deleteFromAdmin", "Home", new { subject = @p.Subject }))
+                                            {
 
-                                <a asp-action="deleteFromAdmin" asp-controller="Home"><input class="button" id="submit" type="submit" value="Delete" /></a>}
+                    <a asp-action="deleteFromAdmin" asp-controller="Home"><input class="button" id="submit" type="submit" value="Delete" /></a>}
 
-                                    <button type="button" class="btn btn-default btn-sm" data-container="body" title="Reply">
-                                        <i class="fas fa-reply"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-default btn-sm" data-container="body" title="Forward">
-                                        <i class="fas fa-share"></i>
-                                    </button>
-                                </div>
-                                <!-- /.btn-group -->
-                                <button type="button" class="btn btn-default btn-sm" title="Print">
-                                    <i class="fas fa-print"></i>
-                                </button>
-                            </div>
-                            <!-- /.mailbox-controls -->
-                            <div class="mailbox-read-message">
-                                <p>@p.Message</p>
+                                            <button type="button" class="btn btn-default btn-sm" data-container="body" title="Reply">
+                                                <i class="fas fa-reply"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-default btn-sm" data-container="body" title="Forward">
+                                                <i class="fas fa-share"></i>
+                                            </button>
+                                        </div>
+                                        <!-- /.btn-group -->
+                                        <button type="button" class="btn btn-default btn-sm" title="Print">
+                                            <i class="fas fa-print"></i>
+                                        </button>
+                                    </div>
+                                    <!-- /.mailbox-controls -->
+                                    <div class="mailbox-read-message">
+                                        <p>@p.Message</p>
 
 
-                            </div>
-                            <!-- /.mailbox-read-message -->
-                        </div> <!-- /.card-body -->
-                                            <div class="card-footer bg-white">
-                                                <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
-                                                    <li>
+                                    </div>
+                                    <!-- /.mailbox-read-message -->
+                                </div> <!-- /.card-body -->
+                                                        <div class="card-footer bg-white">
+                                                            <ul class="mailbox-attachments d-flex align-items-stretch clearfix">
+                                                                <li>
 
-                                                        @if (ModelFiles != null)
-                                                        {
-                                                            foreach (var f in ModelFiles)
-                                                            {
-                                                    <div class="col-lg-3">
-                                                        <img src="~/img/@f.Name" style="width:90%;">
-                                                        <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile","fileupload",new { fname=f.Name})">Delete</a></div>
-                                                    </div>}
-                                            }
-                                                        <div class="clearfix"></div>
+                                                                    @if (ModelFiles != null)
+                                                                    {
+                                                                        foreach (var f in ModelFiles)
+                                                                        {
+                                            <div class="col-lg-3">
+                                                <img src="~/img/@f.Name" style="width:90%;">
+                                                <div style="padding:10px;text-align:center"><a href="@Url.Action("deletefile", "fileupload", new { fname = f.Name })">Delete</a></div>
+                                            </div>}
+                                    }
+                                                                    <div class="clearfix"></div>
 
-                                                    </li>
+                                                                </li>
 
-                                                </ul>
-                                            </div> <!-- /.card-footer -->
-                                                                <div class="card-footer">
-                                                                    <div class="float-right">
-                                                                        <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
-                                                                        <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
-                                                                    </div>
-                                                                    <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
-                                                                    <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
-                                                                </div>}} <!-- /.card-footer -->
+                                                            </ul>
+                                                        </div> <!-- /.card-footer -->
+                                                                                <div class="card-footer">
+                                                                                    <div class="float-right">
+                                                                                        <button type="button" class="btn btn-default"><i class="fas fa-reply"></i> Reply</button>
+                                                                                        <button type="button" class="btn btn-default"><i class="fas fa-share"></i> Forward</button>
+                                                                                    </div>
+                                                                                    <button type="button" class="btn btn-default"><i class="far fa-trash-alt"></i> Delete</button>
+                                                                                    <button type="button" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
+                                                                                </div>}} <!-- /.card-footer -->
                         </div>
                         <!-- /.card -->
                     </div>
@@ -265,6 +266,4 @@
     </div>
     <!-- /.content-wrapper -->
 
-</div>
-
-
+</div>}

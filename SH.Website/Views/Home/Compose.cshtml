@@ -1,21 +1,18 @@
 ﻿@model SH.Website.Models.ViewModels.AdminContactViewModel
 
-@{
-    Layout = "~/Views/Shared/_LayoutCompose.cshtml";
-}
-
+@{ Layout = "~/Views/Shared/_LayoutCompose.cshtml"; }
+@if (User.HasClaim("ACCESS_LEVEL", "DIRECTOR"))
+{
 <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
-
-
         <!-- Right navbar links -->
         <ul class="navbar-nav ml-auto">
             <!-- Navbar Search -->
             <!-- Navbar Search -->
             <li class="nav-item">
-           
+
                 <a asp-area="" asp-controller="MailBox" asp-action="Logoff" class="nav-link">
                     <input type="submit" value="Logout" class="btn btn-primary" />
                 </a>
@@ -26,7 +23,6 @@
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
         <!-- Brand Logo -->
-
         <!-- Sidebar -->
         <div class="sidebar">
             <!-- Sidebar user (optional) -->
@@ -45,7 +41,7 @@
             <nav class="mt-2">
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                     <!-- Add icons to the links using the .nav-icon class
-         with font-awesome or any other icon font library -->
+                    with font-awesome or any other icon font library -->
 
                     <li class="nav-item menu-open">
                         <a href="#" class="nav-link active">
@@ -134,7 +130,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-3">
-                         <a asp-area="" asp-controller="Home" asp-action="MailBox" class="btn btn-primary btn-block mb-3">Back to Inbox</a>
+                        <a asp-area="" asp-controller="Home" asp-action="MailBox" class="btn btn-primary btn-block mb-3">Back to Inbox</a>
 
                         <div class="card">
                             <div class="card-header">
@@ -161,7 +157,6 @@
                             <!-- /.card-body -->
                         </div>
                         <!-- /.card -->
-
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
@@ -205,7 +200,7 @@
                         <!-- /.card -->
                     </div>
                     <!-- /.col -->
-                </div>  
+                </div>
 
                 <!-- /.row -->
             </div><!-- /.container-fluid -->
@@ -216,5 +211,4 @@
     <!-- Control Sidebar -->
 
 
-</div>
-<!-- ./wrapper -->
+</div> <!-- ./wrapper -->}
