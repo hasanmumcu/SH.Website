@@ -172,7 +172,7 @@
                                                                         <div class="form-group">
                                                                             <label asp-for="projectDescription">Project Description</label>
                                                                             @*<textarea id="inputDescription" class="form-control" rows="4">*@
-                                                                            <input asp-for="projectDescription" class="form-control" id="inputDescription" rows="4" />
+                                                                            <input asp-for="projectDescription" class="form-control" id="inputDescription" rows="4"required />
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label asp-for="status">Status</label>
@@ -187,12 +187,12 @@
                                                                         <div class="form-group">
                                                                             <label asp-for="clientCompany">Client Company</label>
                                                                             @*<input type="text" id="inputClientCompany" class="form-control" value="Deveint Inc">*@
-                                                                            <input asp-for="clientCompany" id="inputClientCompany" class="form-control" />
+                                                                            <input asp-for="clientCompany" id="inputClientCompany" class="form-control" required/>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label asp-for="projectLeader">Project Leader</label>
                                                                             @*<input type="text" id="inputProjectLeader" class="form-control" value="Tony Chicken">*@
-                                                                            <input asp-for="projectLeader" id="inputProjectLeader" class="form-control" />
+                                                                            <input asp-for="projectLeader" id="inputProjectLeader" class="form-control" required/>
                                                                         </div>
                                                                     </div>
                                                                     <!-- /.card-body -->
@@ -214,17 +214,17 @@
                                                                         <div class="form-group">
                                                                             <label for="inputEstimatedBudget">Estimated budget</label>
                                                                             @*<input type="number" id="inputEstimatedBudget" class="form-control" value="2300" step="1">*@
-                                                                            <input asp-for="estimatedBudget" id="inputEstimatedBudget" class="form-control" />
+                                                                            <input asp-for="estimatedBudget" id="inputEstimatedBudget" class="form-control" required/>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="inputSpentBudget">Total amount spent</label>
                                                                             @*<input type="number" id="inputSpentBudget" class="form-control" value="2000" step="1">*@
-                                                                            <input asp-for="totalAmountSpent" id="inputSpentBudget" class="form-control" />
+                                                                            <input asp-for="totalAmountSpent" id="inputSpentBudget" class="form-control" required/>
                                                                         </div>
                                                                         <div class="form-group">
                                                                             <label for="inputEstimatedDuration">Estimated project duration</label>
                                                                             @*<input type="number" id="inputEstimatedDuration" class="form-control" value="20" step="0.1">*@
-                                                                            <input asp-for="estimatedProjectDuration" id="inputEstimatedDuration" class="form-control" />
+                                                                            <input asp-for="estimatedProjectDuration" id="inputEstimatedDuration" class="form-control" required/>
                                                                         </div>
                                                                     </div>
                                                                     <!-- /.card-body -->

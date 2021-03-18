@@ -42,13 +42,13 @@ else
                 <form asp-controller="Home" asp-action="LoginUser" method="post" new role="form">
                     <div class="flex flex-col pt-4">
                         <label for="email" class="text-lg">Email</label>
-                        <input asp-for="Email" class="form-control" placeholder="your@email.com" />
+                        <input asp-for="Email" class="form-control" placeholder="your@email.com" required/>
                         @*<input type="email" id="email" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">*@
                     </div>
 
                     <div class="flex flex-col pt-4">
                         <label for="password" class="text-lg">Password</label>
-                        <input asp-for="Password" class="form-control" placeholder="Password" />
+                        <input asp-for="Password" class="form-control" placeholder="Password" required/>
                         @*<input type="password" id="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">*@
                     </div>
 
