@@ -1,2 +1,2 @@
-# SH.Website
-ASP.Net Core MVC Website with SQL Server Data Access Layer
+#ASP.Net Core MVC Website with SQL Server Data Access Layer
+
